@@ -1,0 +1,132 @@
+%\documentclass[tip_rada, jezik]{FSBtex}
+% moguce opcije su:
+%	-> tip_rada: seminar, zavrsni, projekt, diplomski
+%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
+\documentclass[disertacija,hrvatski]{FSBtex}
+
+
+\usepackage{lipsum}
+
+% naredbe za generiranje datoteke
+% pdflatex main.tex
+% bibtex main
+% makeindex -s nomencl.ist -o main.nls main.nlo
+% makeglossaries-lite main
+% pdflatex main.tex
+% pdflatex main.tex
+
+ 
+
+%----------------------------------------------------------------------------------------
+%	POSTAVKE RADA
+%----------------------------------------------------------------------------------------
+
+\title{Naslov disertacije test HR}
+\titleENG{Title dissertation test ENG}
+
+\author{Marko Markić}
+
+\mentor{prof. dr. sc. Miki Mikić, dip. ing.}
+\mentorDva{dr. sc. Pero perić, dip. ing.}
+\mentorENG{Full prof. Miki Mikić, PhD}
+\mentorDvaENG{Associate prof. Pero perić, PhD}
+
+
+%-- sljedeci elementi potrebni su za doktorsku disertaciju:
+
+
+
+\zahvala{
+Izjavljujem da sam ovaj rad izradio samostalno koristeći stečena znanja tijekom studija i navedenu literaturu.\\
+
+Zahvaljujem se svom mentoru \textbf{prof. dr. sc. Peri Periću} što mi je omogućio da napišem ovaj rad......
+}
+
+
+\zadatak{slike/zadatak.pdf}
+
+\keywordsHR{PID; LQR; hidraulika}
+\keywordsENG{PID; LQR; hydraulics}
+
+%----------------------------------------------------------------------------------------
+%	POCETAK DOKUMENTA
+%----------------------------------------------------------------------------------------
+\begin{document}
+		
+\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+	
+\input{mentor_zivotopis.tex}
+
+\input{zahvala.tex}
+
+
+\input{sazetak.tex}
+
+
+%\input{prosireni_sazetak.tex}
+
+
+	% sadrzaj, popis slika, tablica, oznaka...
+\sadrzaj
+
+% sve sa A se prvo ispisuje kod oznaka
+
+%% OVO NE RADI!!! +
+
+%\nomenclature[A]{$s$}{klizna površina SMC regulatora \nomunit{\si{\kilogram\per\cubic\meter}}}
+%\nomenclature[A]{$k_1,\ k_2$}{pojačanja SMC regulatora \nomunit{-}}%
+%\nomenclature[A]{$k_1,\ k_2,\ k_3$}{pojačanja metode povratnog koraka \nomunit{-}}%
+%
+%% konstante
+%\nomenclature[C]{$g$}{gravitacijsko ubrzanje  \nomunit{9,81 \si{\meter\per\square\second}}}%
+%
+%%% grcke oznake
+%\nomenclature[G]{$\beta,\ \gamma$}{težinski koeficijenti PID regulatora \nomunit{-}}%
+%\nomenclature[G]{$\rho$}{gustoća fluida, \nomunit{\si{\kilogram\per\cubic\meter}} }%
+%
+%% indeksi
+%\nomenclature[I]{$\alpha_d$}{koeficijent istjecanja \nomunit{-}}%
+%
+%% akcenti
+%\nomenclature[T]{$\underline{\square}$}{Dual quaternion }%
+%
+%% kratice
+%\newacronym{ga}{GA}{genetski algoritmi (eng. \textit{Genetic Algorithms})}
+% 
+ 
+ %% OVO NE RADI!!! -
+
+ 
+ 
+%----------------------------------------------------------------------------------------
+%	OVDJE IDE OSTATAK RADA I SVA POGLAVLJA
+%----------------------------------------------------------------------------------------
+% pocetak brojanja rada od prve stranice
+\pagebreak
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% ovdje ide ostatak rada
+\input{uvod}
+\input{model}
+\input{opt}
+\input{rezultati}
+\input{zakljucak}
+
+
+% literatura:
+\LiteraturaPostavke
+\bibliography{literatura}
+
+
+\appendix
+\input{dodatak_izvodi}
+
+
+
+\end{document}
+
+
+
+
+

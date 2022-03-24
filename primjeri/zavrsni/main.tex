@@ -1,0 +1,109 @@
+%\documentclass[tip_rada, jezik]{FSBtex}
+% moguce opcije su:
+%	-> tip_rada: seminar, zavrsni, projekt, diplomski
+%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
+\documentclass[zavrsni]{FSBtex}
+
+
+\usepackage{lipsum}
+
+% naredbe za generiranje datoteke
+% pdflatex main.tex
+% bibtex main
+% makeindex -s nomencl.ist -o main.nls main.nlo
+% makeglossaries-lite main
+% pdflatex main.tex
+% pdflatex main.tex
+
+
+% postavke rada
+\author{Marko Markić}
+
+\mentor{prof. dr. sc. Miki Mikić, dip. ing.}
+\mentorDva{dr. sc. Pero perić, dip. ing.}
+
+\zahvala{
+Izjavljujem da sam ovaj rad izradio samostalno koristeći stečena znanja tijekom studija i navedenu literaturu.\\
+
+Zahvaljujem se svom mentoru \textbf{prof. dr. sc. Peri Periću} što mi je omogućio da napišem ovaj rad......
+}
+
+
+\zadatak{slike/zadatak.pdf}
+
+\kljucnerijeci{PID; LQR; hidraulika}
+\keywords{PID; LQR; hydraulics}
+
+%----------------------------------------------------------------------------------------
+%	POCETAK DOKUMENTA
+%----------------------------------------------------------------------------------------
+\begin{document}
+\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+
+% u slucaju enegleske verzije potrebno obrnut redoslijed sazetaka
+\begin{sazetak}
+Ovdje ide sažetak rada na hrvatskom\\
+\end{sazetak}
+
+\begin{abstract}
+Ovdje ide sažetak rada na engleskom jeziku\\
+\end{abstract}
+
+
+% sve sa A se prvo ispisuje kod oznaka
+\nomenclature[A]{$s$}{klizna površina SMC regulatora \nomunit{\si{\kilogram\per\cubic\meter}}}
+\nomenclature[A]{$k_1,\ k_2$}{pojačanja SMC regulatora \nomunit{-}}%
+\nomenclature[A]{$k_1,\ k_2,\ k_3$}{pojačanja metode povratnog koraka \nomunit{-}}%
+
+% konstante
+\nomenclature[C]{$g$}{gravitacijsko ubrzanje  \nomunit{9,81 \si{\meter\per\square\second}}}%
+
+%% grcke oznake
+\nomenclature[G]{$\beta,\ \gamma$}{težinski koeficijenti PID regulatora \nomunit{-}}%
+\nomenclature[G]{$\rho$}{gustoća fluida, \nomunit{\si{\kilogram\per\cubic\meter}} }%
+
+% indeksi
+\nomenclature[I]{$\alpha_d$}{koeficijent istjecanja \nomunit{-}}%
+
+% akcenti
+\nomenclature[T]{$\underline{\square}$}{Dual quaternion }%
+
+% kratice
+\newacronym{ga}{GA}{genetski algoritmi (eng. \textit{Genetic Algorithms})}
+ 
+ 
+
+ 
+ 
+%----------------------------------------------------------------------------------------
+%	OVDJE IDE OSTATAK RADA I SVA POGLAVLJA
+%----------------------------------------------------------------------------------------
+% pocetak brojanja rada od prve stranice
+\pagebreak
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% ovdje ide ostatak rada
+\input{uvod}
+\input{model}
+\input{opt}
+\input{rezultati}
+\input{zakljucak}
+
+
+% literatura:
+\LiteraturaPostavke
+\bibliography{literatura}
+
+
+\appendix
+\input{dodatak_izvodi}
+
+
+
+\end{document}
+
+
+
+
+

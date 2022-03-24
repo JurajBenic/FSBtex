@@ -1,0 +1,45 @@
+\chapter{Uvod}
+Jedan od najznačajnijih problema kod konstruiranja mehanizama je optimalna sinteza mehanizma.
+Tijekom godina razvijeno je nekoliko metoda za sintezu mehanizama \cite{Chiang2000, Hansen2009} ali svaka od njih primjenjiva je samo na određenim tipovima mehanizma. 
+Zbog toga odabir odgovarajuće metode optimiranja mehanizma ovisi o samom mehanizmu koji se želi optimirati tj. aplikaciji mehanizma, potrebnoj numeričkoj točnosti te vremenu koje je potrebno da se postigne optimalno riješenje.
+
+Primjena mehanizma utječe na optimizacijski problem, tj. ograničuje ga. U industrijskim aplikacijama ta ograničenja su dužine elemenata, prostor u koji mehanizam mora stati...\\
+
+Možemo razlikovati dvije vrsta optimalne sinteze mehanizma: dimenzionalna i strukturalna sinteza. 
+Dimenzionalna sinteza svodi se na određivanje dimenzija linkova mehanizma koji će omogućiti slijeđenje željene trajektorije ili funkcije, dok su mehanizam i veze između linkova poznati.
+Strukturalna sinteza teži je problem jer nam nije poznat mehanizam ni veze između linkova te stoga moramo optimirati i topologiju i dimenzije mehanizma.\\
+
+U ovom radu koristiti će se \acrlong{ga} ili \acrshort{ga} \cite{McCall2005, Cabrera2002} za optimiranje mehanizma.
+Referenca na primjer tablice~\ref{tbl:primjer}.
+
+
+\begin{table}[h!]
+\centering
+\caption{Primjer tablice}
+\label{tbl:primjer}
+\begin{tabular}{ccc}
+stupac 1 & stupac 2 & stupac 3\\
+\hline
+\hline
+nesto & $a+b$ & nesto\\
+$a+b$ & nesto & $a+b$\\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{table}[h!]
+	\centering
+	\caption[Primjer tablice bolji, test citata]{Primjer tablice bolji, test citata \cite{Chiang2000}}
+	\label{tbl:primjer2}
+	\begin{tabular}{ccc}
+		\toprule
+		stupac 1 & stupac 2 & stupac 3\\ 
+		\midrule
+		nesto & $a+b$ & nesto\\
+		$a+b$ & nesto & $a+b$\\ 
+		\bottomrule
+	\end{tabular}
+\end{table}

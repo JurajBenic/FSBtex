@@ -1,0 +1,24 @@
+\chapter{Optimiranje mehanizma}
+Nakon što smo dobili matematički model kinematike mehanizma moramo odrediti projektne varijable. U ovom slučaju će projektne varijable biti koordinate točaka $A$ i $B$ mehanizma:
+$x_1=A_x$, $x_2=A_y$, $x_3=B_x$ i $x_4=B_y=a_3$.\\
+
+Nakon što smo odredili projektne varijable moramo odabrati slučajni početni položaj mehanizma za koji ćemo izračunati dužine linkova mehanizma, početni kut mehanizma te za odabrano područje gibanja i odabrani broj koraka u području gibanja računa se vrijednost funkcije cilja uz zadana ograničenja mehanizma.\\
+
+Ograničenja mehanizma za ovaj zadatak su slijedeća:
+\begin{align*}
+g_1&=x_1-25\geq 0\  &g_2=45-x_1\geq 0\\
+g_3&=x_3+15\geq 0\   &g_4=5-x_3\geq 0\\
+g_5&=x_2-5\geq 0\  &g_6=25-x_2\geq 0\\
+g_7&=x_4-5\geq 0\   &g_8=25-x_4\geq 0\\
+\end{align*}
+
+U ovom radu usporediti će se dvije funkcije cilja:
+\begin{enumerate}
+\item $f(\varphi)=max\left( \mid M_{konst}-M(\varphi)\mid\right) $
+\item $f(\varphi)=\sum_{i=1}^{n}\left( M_{konst}-M_i(\varphi) \right)$
+\end{enumerate}
+
+Da bi mehanizam mogli optimirati pomoću genetskog algoritma moramo problem minimizacije svesti za na problem maksimizacije te tada optimizacijski problem za genetski algoritam glasi:
+\begin{equation}
+max \rightarrow \dfrac{1}{1+f(\varphi)}
+\end{equation}

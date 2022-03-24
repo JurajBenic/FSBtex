@@ -1,0 +1,92 @@
+%\documentclass[tip_rada, jezik]{FSBtex}
+% moguce opcije su:
+%	-> tip_rada: seminar, zavrsni, projekt, diplomski
+%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
+\documentclass[seminar]{FSBtex}
+
+% naredbe za generiranje datoteke
+% pdflatex main.tex
+% bibtex main
+% makeindex -s nomencl.ist -o main.nls main.nlo
+% makeglossaries-lite main
+% pdflatex main.tex
+% pdflatex main.tex
+
+
+% postavke dokumenta
+\author{Marko Markić}
+\mentor{prof. dr. sc. Pero Perić, dip. ing.}
+\title{Optimalna sinteza mehanizma tlačnog cilindra}
+
+% odvje se dodaje zadatak u pdf-u ako on postoji
+\zadatak{slike/zadatak.pdf}
+
+
+%----------------------------------------------------------------------------------------
+%	POCETAK DOKUMENTA
+%----------------------------------------------------------------------------------------
+\begin{document}
+\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+
+
+
+% sve sa A se prvo ispisuje kod oznaka
+\nomenclature[A]{$A$}{površina  \nomunit{\si{\meter\per\square\meter}}}%
+\nomenclature[A]{$h$}{pozicija klipa \nomunit{\si{\meter}}}
+\nomenclature[A]{$F$}{sila \nomunit{\si{\newton}}}%
+\nomenclature[A]{$M$}{moment \nomunit{\si{\newton\meter}}}%
+\nomenclature[A]{$T$}{temperatura \nomunit{\si{\kelvin}}}%
+
+% konstante
+\nomenclature[C]{$g$}{gravitacijsko ubrzanje  \nomunit{9,81 \si{\meter\per\square\second}}}%
+
+%% grcke oznake
+\nomenclature[G]{$\varphi$}{kut zakreta \nomunit{\si{\radian}}}%
+
+% ako ima indeksa i akcenata i oznaka
+% indeksi
+%\nomenclature[I]{$d$}{koeficijent istjecanja \nomunit{-}}%
+
+% akcenti
+%\nomenclature[T]{$\underline{\square}$}{Dual quaternion }%
+
+% kratice
+\newacronym{ga}{GA}{genetski algoritmi (eng. \textit{Genetic Algorithms})}
+
+ 
+%----------------------------------------------------------------------------------------
+%	OVDJE IDE OSTATAK RADA I SVA POGLAVLJA
+%----------------------------------------------------------------------------------------
+
+% pocetak brojanja rada od prve stranice
+\pagebreak
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% ovdje ide ostatak rada
+\input{uvod}
+\input{model}
+\input{opt}
+\input{rezultati}
+
+
+% literatura:
+\LiteraturaPostavke
+\bibliography{literatura}
+
+
+%----------------------------------------------------------------------------------------
+%	ovdje idu prilozi
+%----------------------------------------------------------------------------------------
+
+%\appendix
+%\chapter{Prilog matematička notacija}
+%Prvi dodatak
+
+
+\end{document}
+
+
+
+
+

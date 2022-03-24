@@ -1,0 +1,91 @@
+ \begin{prosirenisazetak}
+
+	Bespilotne letjelice s više rotora pripadaju u kategoriju autonomnih ili daljinski upravljanih zrakoplova karakteriziranih nizom svojstava koje im omogućuju širok raspon korisnih primjena. U svrhu uspješnog ispunjenja letačke misije, letjelica mora zadovoljiti tražene performanse. Uporabljivost takvih letjelica uvelike ovisi o pogonskom sustavu, te zbog toga letački zadaci različitih profila zahtijevaju različite vrste i konfiguracije pogona, sposobnosti vertikalnog polijetanja i slijetanja, \textit{engl.} \{vtol}, kao i održavanja stacionarnih i sporih letova. Letjelice ovog tipa imaju širok raspon korisnih primjena, kao što je podrška iz zraka prilikom nadgledanja, pomoć kod katastrofa ili misija traženja i spašavanja, granične patrole i detekcije neovlaštene prisutnost uz otkrivanje upada i slično. Moderne višerotorske letjelice se sve više koriste u rekreativne i natjecateljske uloge kao što su utrke, snimanje iz zraka uključujući trodimenzijsko skeniranje objekata ili terena, te u poljoprivredne svrhe poput kontrole rasta vegetacije i kontrole utjecaja štetočina. 
+	
+	Zahvaljujući ubrzanom razvoju sastavnih komponenti poput senzorskog sustava, mikrokontrolera, te pogona i baterija, danas su dostupne različite višerotorske letjelice bazirane na „software“–u i „hardwareu“–u otvorenog koda. Takve letjelice prikladne su za istraživanje i ispitivanje različitih regulacijskih sustava stabilizacije leta.		
+	Međutim, dinamika takvih sustava je inherentno  nestabilna, što znači da letjelica ne zadržava zadanu putanju, osim ako se ne primjenjuju stabilizacijske akcije. Letjelicu karakterizira šest stupnjeva slobode gibanja (tj. tri translacije i tri rotacije), dok je njena dinamika nelinearna. Također, sustav može biti pod–upravljan ukoliko konfiguracija pogonskog sustava ne omogućava neovisno gibanje za svaki stupanj slobode, odnosno drugim riječima, ako se rotacijsko i translacijsko gibanje vozila ne može razdvojiti na nezavisne komponente. 
+	
+	Veliki nedostatak je ograničeno vrijeme leta od obično 15–60 minuta (autonomija) i ograničenja nosivosti korisnog tereta, pri čemu je povećanje veličine tereta u korelaciji sa kraćim vremenom trajanja leta. Određena poboljšanja autonomije više–rotorskih bespilotnih letjelica dobivena su korištenjem motora s unutarnjim izgaranjem kao glavnim pogonom propelera. Za takve sustave, glavni problem je kada letjelica zahtijeva brzu i preciznu kontrolu brzine vrtnje propelera kako bi se postigao željeni profil leta, gdje dinamika motora s unutrašnim izgaranjem potencijalno nije dovoljno brza.
+	
+	Pogonski sustav letjelice ključan je i neophodan modul koji ima zadatak osigurati stalni potisak propelera kako bi se održao stabilan let. Performanse, učinkovitost i korisnost letjelice značajno ovise o pogonskim karakteristikama i mogućnostima. Tipičan pogon sastoji se od većeg broja propelera spojenih na odgovarajuće pogonske motore koji rotacijom generiraju okretni moment a posljedično i potisak propelera. Pritom izvedbe mogu biti s fiksnim ili varijabilnim kutom propelera, koaksijalno montirani i montirani pod kutem. U literaturama je pokazano da svaki izbor konfiguracije pogonskog sustava ima značajan utjecaj na ponašanje letjelice. Za potrebe održavanja stabilnog lebdećeg položaja, minimalni zahtjev je ostvarenje neto sile potiska koja je približno jednaka težini letjelice. U praksi se pokazalo da bi omjer ukupne potisne sile propelera i težine letjelice, \textit{engl.} \ {twr} trebao bi biti okvirno dva ili više kako bi se osiguralo dovoljno snage za zadovoljavajuće performanse letjelice.
+
+	Propeleri su učestalo pogonjeni električnim motorima s elektroničkom komutacijom, trapeznih oblika elektormotorne sile, \textit{engl.} \ {bldc} ili sinusoidalnih oblika elektromotorne sile, \textit{engl.} \ {pmsm} koji su opremljeni odgovarajućim regulatorima brzine vrtnje. U većini slučajeva vratilo motora izravno je spojeno s propelerom bez prijenosnog mehanizma (tj. zupčanog ili lančanog pogona). Premda je \ {bldc} odnosno \ {pmsm} motor složeniji za analizu prilikom sinteze sustava upravljanja, posjeduje povoljnija svojstva od istosmjernog motora s četkicama i mehaničkim komutatorom, \textit{engl.} \ {dc}  Machine zbog veće učinkovitosti u pretvorbi električne u mehaničku energiju i niskih zahtjeva za održavanjem. \ {bldc} i \ {pmsm} motori obično su pogonjeni pravokutno oblikovanim faznim naponom kroz šest koraka komutacije. U naprednijim strukturama koristi se i vektorsko upravljanje, posebice za \ {pmsm}.
+
+	Trofazna armatura može biti spojena u zvijezdu (wye) ili trokut (delta) konfiguraciju namota. Pojednostavljeni ekvivalentni model \ {uav} motora može se izvesti u svrhu analize i modeliranja dinamike pogonskog sustava.
+
+	Elektrokemijske baterije rašireno se koriste kao izvor napajanja više–rotorskih letjelica. Litij–polimerne, \textit{engl.} \ {lipo} baterije u upotrebi su zbog velike gustoće energije, mogućnosti isporuke značajne snage u kratkim vremenskim intervalima i relativno male mase te predstavljaju najčešću vrstu izvora energije za pogon \ {uav} letjelica, imajući pritom značajne prednosti nad Nikal–Metalnim Hibridnim, \textit{engl.} \ {nimh} baterijama u smislu gustoće energije. Međutim, čak i moderne baterije ne mogu osigurati dovoljno energije za dulje letačke misije. Stoga treba istražiti alternativne izvore energije kako bi se povećala autonomija, primjerice primjenu motora s unutarnjim izgaranjem i električnim generatorom i moguće kombinacije s baterijom kao pomoćnim izvorom energije. Kako bi se procijenila preostala zaliha energije baterije, potrebno je pratiti njeno stanje napunjenosti, \textit{engl.} \ {soc}.
+
+	Važna komponenta koji omogućuje stabilan let je regulacijski sustav, budući da se letjelica ne može sama stabilizirati bez održavanja upravljačkih komandi za električne motore. Glavni zadatak regulatora je tumačenje ulaznih signala te generiranje izlaznih signala kako bi svaki motor mogao postići traženu brzinu vrtnje. Uobičajeno se sinteza upravljačkih algoritama temelji na pojednostavljenom modelu dinamike tijela zanemarujući složenu dinamiku motora i propelera. Vanjske sile i momenti koje generira pogon su ulazi u sustav dok je orijentacija letjelice definirana tzv. Eulerovim kutovima. 
+	
+	Ovo doktorsko istraživanje opisuje metodološki pristup dizajniranju upravljačkih sustava više–rotorske letjelice sa hibridno–električnom pogonskom jedinicom, temeljenim na kombinaciji motora sa unutrašnjim izgaranjem, električnog generatora i elektrokemijske baterije. Nadalje, izvršena je analiza i modeliranje pojedinih komponenata hibridnog pogonskog sustava. Fizički parametri dinamičkih modela komponenata pogona identificirani su mjerenjima na izgrađenim odgovarajućim eksperimentalnim postavima. Na temelju dobivenih podataka predložen je detaljan model dinamike hibridnog pogonskog sustava za dvije odabrane konfiguracije izvora energije. Predložena metodologija verificirana je računalnim simulacijama i na izgrađenim eksperimentalnim postavima.
+
+	U sklopu Laboratorija za elektrotehniku izgrađeni su sljedeći eksperimentalni postavi:
+
+	\begin{itemize}
+
+		\item Laboratorijski postav za ispitivanje agregata u sklopu hibridnog sustava propulzije bespilotne letjelice zasnovanog na motoru s unutarnjim izgaranjem i generatorom temeljenom na beskolektorskom istosmjernom stroju, sa paralelno dodatnom elektrokemijskom baterijom. 
+
+		
+		\item Laboratorijski postav za ispitivanje sustava upravljanja tokovima električne energije temeljenog na DC-DC energetskim pretvaračima i litij–polimernim baterijama. 
+
+		
+		\item Laboratorijski postav za ispitivanje propelerskih potisnika (propulzora) u sklopu sustava hibridne propulzije.
+
+	\end{itemize}
+
+	Nakon izgradnje navedenih eksperimentalnih postava proveden je niz mjerenja kojima su identificirani matematički modeli namijenjeni sintezi sustava upravljanja hibridnom propulzijom bespilotne letjelice, odnosno provedena je eksperimentalna provjera odgovarajućuh sustava upravljanja hibridnim pogonom letjelice. Time su postignuti glavni ciljevi istraživanja, odnosno: 
+
+	\begin{itemize}
+
+		\item Razrađen je sustavni pristup modeliranju dinamike hibridnog pogonskog sustava više–rotorskih bespilotnih letjelica. 
+
+		
+		\item Temeljem dobivenog dinamičkog modela hibridnog pogonskog sustava i odgovarajućeg postupka sinteze upravljačkog sustava dobivena su poboljšanja u performansama sustava propulzije letjelice.
+
+	\end{itemize}
+
+	Provedena istraživanja rezultirala su znanstvenim doprinosima koji se mogu sažeti kako slijedi:
+
+	\begin{itemize}
+
+		\item Identificirani su matematički modeli pojedinih komponenti pogonskog sustava hibridne višerotorske bespilotne letjelice u svrhu dobivanja sveobuhvatnog dinamičkog modela pogonskog sustava, s ciljem poboljšanja procesa sinteze upravljačkog sustava pogona i letjelice.
+
+		
+		\item 	Razrađen je postupak projektiranja upravljačkog sustava pogona hibridne letjelice koji uključuje dinamičke karakteristike i eksperimentalno je potvrđen razvijeni sustavni pristup projektiranju regulacijskog sustava hibridne propulzije i letjelice, temeljen na matematičkom modelu koji uključuje dinamičke karakteristike hibridnog pogonskog sustava, čime se u konačnici postižu poboljšane performanse cjelokupnog sustava upravljanja dinamikom letjelice.
+
+	\end{itemize}
+
+	Istraživanje prikazano u ovome radu podijeljeno je u šest faza, koje ga opisuju kako slijedi:
+
+	\begin{enumerate}
+
+		\item \textit{Analiza dinamike i modeliranje pojedinih komponenata hibridnog pogonskog sustava}\\
+		U prvoj fazi provodi se matematičko modeliranje sastavnih komponenti pogona hibridne letjelice, koje su međusobno povezane i na različite načine pridonose dinamici letjelice. Kako bi se istražio cijeli raspon dinamike pogonskog sustava, istu je potrebno podijeliti na elementarne komponente i provesti temeljitu analizu, koristeći pritom odgovarajuće fizikalne zakonitosti za opisivanje značajki pogona, na temelju čega se razvijaju dinamički modeli koji su pogodni za računalne simulacije
+
+		
+		\item \textit{Eksperimentalna mjerenja i identifikacija fizikalnih konstanti} \\
+	Za potrebe razvoja odgovarajućih dinamičkih modela komponenata pogonskog sustava letjelice, na izgrađenim postavima provode se eksperimentalana mjerenja za identifikaciju fizikalnih konstanti. Snimanje rezultata ostvareno je povezivanjem senzorskog sustava s računalom pomoću odgovarajućeg sučelja za prikupljanje signala u realnom vremenu i spremanje prodataka za naknadnu analizu na računalu. 
+
+		
+		\item \textit{Razvoj modela hibridnog pogonskog sustava letjelice} \\
+		Koristeći prethodno dobivene modele pogonskih podsustava postavlja se model pogona na kojem se temelji sinteza regulacijskog sustava hibridnog pogona letjelice. Također, predlaže se sveobuhvatni model hibridne propulzije za dvije konfiguracije razmatrane u ovom radu.
+
+		
+		\item \textit{Implementacija sustava upravljanja hibridnom propulzijom} \\  
+		Eksperimentalna implementacija razvijenih upravljačkih algoritama izvodi se na  mikrokontrolerskom sustavu čije je programiranje podržano unutar Matlab/Simulink™ programskog okruženja koje omogućuje generiranje i učitavanje odgovarajućeg programskog koda. 
+
+		
+		\item \textit{Eksperimentalna validacija predložene metode}\\
+		Za razvijenu metodologiju sustavi upravljanja hibridnim pogonom letjelice ispituju se u realnim uvjetima rada, koristeći pritom izgrađene eksperimentalne postave.
+
+		
+		\item \textit{Završetak} \\
+		Izvedba zaključaka iz provedenih istraživanja. Prikupljanje rezultata i analiza znanstvenog doprinosa, objavljivanje znanstvenih radova.
+
+		
+	\end{enumerate}
+
+	
+	
+	
+\end{prosirenisazetak}
