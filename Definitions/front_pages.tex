@@ -1,0 +1,52 @@
+%----------------------------------------------------------------------------------------
+%	FRONT PAGE FOR SEMINAR, MASTER'S AND BACHELOR'S THESIS
+%----------------------------------------------------------------------------------------
+\newcommand{\FrontPageZavrsniDiplomskiProjekt}{
+	\newpage
+	\newgeometry{margin=30mm}
+    \thispagestyle{empty}
+	\begin{center}
+		\null
+		\ifdefstring{\@language}{croatian}
+			{\large \MakeUppercase{\@unizgHR}}
+			{\large \MakeUppercase{\@unizgEN}}
+	\end{center}
+	\begin{center}
+		\large \ifdefstring{\@language}{croatian}{\@fsbHR}{\@fsbEN}
+	\end{center}
+	\vfill
+	\begin{center}
+		{\LARGE \textbf{ \ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}}
+		\vfill			
+		\hfill \textrm{\large\textbf{\@Author}}	% autor
+		\vfill
+		\textsc{Zagreb, \the\year{}\ifdefstring{\@language}{croatian}{.}{}}
+    \end{center}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	FRONT PAGE FOR SCRIPT
+%----------------------------------------------------------------------------------------
+\newcommand{\FrontPageSkripta}{
+	\newpage
+	\newgeometry{margin=30mm}
+	\thispagestyle{empty}
+	\begin{center}
+		\large\bfseries %\color{FSBblue}
+		{\ifdefstring{\@language}{croatian}{\MakeUppercase\@fsbHR}{\MakeUppercase\@fsbEN}}\\[10mm]
+%		{\ifdefstring{\@language}{croatian}{\MakeUppercase\@unizgHR}{\MakeUppercase\@unizgEN}}\\[10mm]
+		{\ifdefstring{\@language}{croatian}
+			{\includegraphics[height=3.5cm]{Definitions/unizg.eps}}
+			{\includegraphics[height=3.5cm]{Definitions/unizg_eng.eps}}
+		}
+	\end{center}
+	\vspace{40mm}
+	\begin{center}
+		{\large\bfseries\@Author}\\[10mm]
+		{\bfseries\huge\ifdefstring{\@language}{croatian}{\MakeUppercase\@TitleHR}{\MakeUppercase\@TitleEN}}\\
+		\vfill
+		{\textsc{Zagreb, \the\year{}.}}
+	\end{center}
+}
