@@ -58,7 +58,7 @@
 \RequirePackage{calc}
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
-\RequirePackage{totcount} % To enable extracting the value of the counter "page" 
+\RequirePackage[figure,table]{totalcount} % To enable extracting the value of the counter "page" 
 \RequirePackage{changepage} % To adjust the width of the column for the title part and figures/tables (adjustwidth environment)
 
 %\RequirePackage[]{tocloft} % For dots in TOC. If subfigure package is loaded, the subfigure option needs to be added here to avoid clash: \RequirePackage[subfigure]{tocloft}
@@ -74,7 +74,7 @@
 \geometry{
 	a4paper,
   	margin=25mm,
-	showframe, % Uncomment to show how the type block is set on the page
+%	showframe, % Uncomment to show how the type block is set on the page
 }
 
 
@@ -144,6 +144,9 @@
 \def\@KeywordsEN{}
 \newcommand{\KeywordsEN}[1]{\gdef\@KeywordsEN{#1}}%
 
+\def\@Acknowledgment{}
+\newcommand{\Acknowledgment}[1]{\renewcommand{\@Acknowledgment}{#1}}
+
 \def\@CourseHR{} % naziv kolegija
 \newcommand{\CourseHR}[1]{\gdef\@CourseHR{#1}}%
 \def\@CourseEN{}
@@ -152,16 +155,8 @@
 \def\@AcademicYear{}
 \newcommand{\AcademicYear}[1]{\gdef\@AcademicYear{#1}}%
 
-%\newcommand{\Logo}{unizg.png}
-%\newcommand{\LogoS}{unizg.eps}
-%\newcommand{\LogoSen}{unizg_eng.eps}
-
-%\newcommand{\@zadatak}{}
-%\newcommand{\zadatak}[1]{\renewcommand{\@zadatak}{#1}}
-
-%\newcommand{\@zahvala}{}
-%\newcommand{\zahvala}[1]{\renewcommand{\@zahvala}{#1}}
-
+\def\@Assignment{}
+\newcommand{\Assignment}[1]{\gdef\@Assignment{#1}}%
 
 
 
@@ -176,10 +171,10 @@
 }%
 
 \gdef\@TypeTextEN{
-	\ifdefstring{\@type}{seminar}{SEMINAR}{
-	\ifdefstring{\@type}{zavrsni}{BACHELOR'S THESIS}{
-	\ifdefstring{\@type}{projekt}{PROJECT}{
-	\ifdefstring{\@type}{diplomski}{MASTER'S THESIS}{}}}}
+	\ifdefstring{\@type}{seminar}{SEMINAR}{%
+	\ifdefstring{\@type}{zavrsni}{BACHELOR'S THESIS}{%
+	\ifdefstring{\@type}{projekt}{PROJECT}{%
+	\ifdefstring{\@type}{diplomski}{MASTER'S THESIS}{}}}}%
 }%
 
 
@@ -212,7 +207,6 @@
 %%   LANGUAGE AND FONTS
 %%----------------------------------------------------------------------------------------
 %\RequirePackage[\FSBjezik]{babel}
-%\RequirePackage[utf8]{inputenc}
 %
 %\RequirePackage{avant} % Use the Avantgarde font for headings
 %
@@ -231,7 +225,15 @@
 
 
 
+%----------------------------------------------------------------------------------------
+%	ENVIROMENTS
+%----------------------------------------------------------------------------------------
+\input{Definitions/environments.tex}
 
+
+%----------------------------------------------------------------------------------------
+%	THEOREMS, PROOFS, ....
+%----------------------------------------------------------------------------------------
 
 
 %%----------------------------------------------------------------------------------------
@@ -346,300 +348,114 @@
 %%% dodavanje mjernih jedinica u popis oznaka
 %\newcommand{\nomunit}[1]{%
 %\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
-%
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	KORICE ZA SVE TIPOVE RADOVA
-%%----------------------------------------------------------------------------------------
 
-%
 
-%
-%\newcommand{\KoriceDisertacija}{
-%	\newpage
-%    \thispagestyle{empty}
-%	Prazno za sad
-%}
-%
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	NASLOVNA STRANA (PRVA STRANA RADA)
-%%----------------------------------------------------------------------------------------
-%\newcommand{\NaslovnaSeminar}{
-%	\newgeometry{margin=30mm}
-%	\newpage
-%    \thispagestyle{empty}
-%	\begin{center}
-%		\null
-%		\ifdefstring{\FSBjezik}{croatian}
-%			{\includegraphics[height=3.45cm]{\LogoS}}
-%			{\includegraphics[height=3.45cm]{\LogoSen}}
-%	\end{center}
-%	\begin{center}
-%		{\large \ifdefstring{\FSBjezik}{croatian}{\MakeUppercase\FSB}{\MakeUppercase\FSBen}}
-%	\end{center}
-%	\vfill
-%	\begin{center}
-%		{\LARGE \textbf{\ifdefstring{\FSBjezik}{croatian}{\TipRada}{\TipRadaEN}}} % tip rada
-%		
-%		% ako je definiran naslov rada		
-%		\ifdefempty{\@title}{}{
-%			\vspace*{5mm}
-%			\Large \textsc{ \ifdefstring{\FSBjezik}{croatian}{\@title}{\@titleENG}}
-%		}
-%	\end{center}
-%	\vfill		
-%	\begin{minipage}[t]{7cm}	% mentori
-%		\ifdefempty{\@mentorDva}{
-%			\ifdefstring{\FSBjezik}{croatian}{Mentor:}{Supervisor:}
-%		}{
-%			\ifdefstring{\FSBjezik}{croatian}{Mentori:}{Supervisors:}
-%		} \\[6pt]
-%  		\@mentor
-%  		\ifdefempty{\@mentorDva}{}{
-%	  		\newline
-%	  		\@mentorDva
-%  		}
-%	\end{minipage} \hfill 
-%	\begin{minipage}[t]{7cm}
-%		\begin{flushright} 
-%			\hfill Student:\\[6pt]
-%			\@author
-%		\end{flushright}
-%	\end{minipage}
-%	\vfill
-%	\begin{center}
-%	\textsc{Zagreb, \the\year{}\ifdefstring{\FSBjezik}{croatian}{.}{}}
-%	\end{center}
-%}
-%
-%%%%%%%%%%%%%%%%%%%
-%% naslovna strana zavrsni, diplomski i projekt
-%%%%%%%%%%%%%%%%%%%
-%\newcommand{\NaslovnaZavrsniDiplomskiProjekt}{
-%	\newgeometry{margin=30mm}
-%	\newpage
-%    \thispagestyle{empty}
-%	\begin{center}
-%		\null
-%		\ifdefstring{\FSBjezik}{croatian}
-%			{\large \MakeUppercase{\UNIZG}}
-%			{\large \MakeUppercase{\UNIZGen}}
-%	\end{center}
-%	\begin{center}
-%		\large \ifdefstring{\FSBjezik}{croatian}{\MakeUppercase\FSB}{\MakeUppercase\FSBen}
-%	\end{center}
-%	\vfill
-%	\begin{center}
-%		{\LARGE \textbf{ \ifdefstring{\FSBjezik}{croatian}{\TipRada}{\TipRadaEN}}} % tip rada
-%	\end{center}
-%	\vfill
-%	\begin{minipage}[t]{7cm}	% mentori
-%		\ifdefempty{\@mentorDva}{
-%			\ifdefstring{\FSBjezik}{croatian}{Mentor:}{Supervisor:}
-%		}{
-%			\ifdefstring{\FSBjezik}{croatian}{Mentori:}{Supervisors:}
-%		} \\[6pt]
-%  		\@mentor
-%  		\ifdefempty{\@mentorDva}{}{
-%	  		\newline
-%	  		\@mentorDva
-%  		}
-%	\end{minipage} \hfill 
-%	\begin{minipage}[t]{7cm}
-%		\begin{flushright} 
-%			\hfill Student:\\[6pt]
-%			\@author
-%		\end{flushright}
-%	\end{minipage}
-%	\vfill
-%	\begin{center}
-%	\textsc{Zagreb, \the\year{}\ifdefstring{\FSBjezik}{croatian}{.}{}}
-%	\end{center}
-%}
-%
-%%%%%%%%%%%%%%%%%%%
-%% izgled naslovnih za doktorski rad
-%%%%%%%%%%%%%%%%%%%
-%\newcommand{\NaslovnaDisertacija}{
-%	\newgeometry{margin=30mm}
-%	\newpage
-%    \thispagestyle{empty}
-%	
-%	dasfadsf
-%}
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	ZAHVALA
-%%----------------------------------------------------------------------------------------
-%\newcommand{\stranicaZahvala}{
-%	\newpage
-%    \thispagestyle{empty}
-%    \vspace*{\fill}
-%    \@zahvala
-%    \begin{flushright}
-%	\@author
-%	\end{flushright}
-%	\vspace*{\fill}   
-%}
-%
-%%----------------------------------------------------------------------------------------
-%%	SADRŽAJ I POPISI SLIKA I TABLICA
-%%----------------------------------------------------------------------------------------
-%\newcommand{\sadrzaj}{
-%	\pagenumbering{roman}
-%	\setcounter{page}{1}	
-%	%\clearpage
-%	\ifpdf
-%		\phantomsection
-%	\fi
-%	\addcontentsline{toc}{chapter}{{\numberline{}\contentsname}}
-%	\tableofcontents
-%	
-%	%-- popis slika
-%	\iftotalfigures	% ako ima koja slika u radu
-%		\ifpdf
-%			\phantomsection
-%		\fi
-%		\listoffigures
-%		\addcontentsline{toc}{chapter}{{\numberline{}\listfigurename}}
-%	\fi
-%
-%	%-- popis tablica
-%	\iftotaltables	% ako ima koja tablica u radu
-%		\ifpdf
-%			\phantomsection
-%		\fi
-%		\listoftables
-%		\addcontentsline{toc}{chapter}{{\numberline{}\listtablename}}
-%	\fi
-%	
-%	
-%	%-- popis oznaka
-%%	\clearpage
+
+
+%----------------------------------------------------------------------------------------
+%	ZAHVALA
+%----------------------------------------------------------------------------------------
+\newcommand{\AcknowledgmentPage}{
+	\newpage
+    \thispagestyle{empty}
+    \vspace*{\fill}
+    \@Acknowledgment
+    \begin{flushright}
+	\@Author
+	\end{flushright}
+	\vspace*{\fill}   
+}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	CONTENT LIST
+%----------------------------------------------------------------------------------------
+\newcommand{\Content}{
+	%\clearpage
+	\ifpdf
+		\phantomsection
+	\fi
+	\addcontentsline{toc}{chapter}{{\numberline{}\contentsname}}
+	\tableofcontents
+	
+	%-- popis slika
+	\iftotalfigures	% ako ima koja slika u radu
+		\ifpdf
+			\phantomsection
+		\fi
+		\listoffigures
+		\addcontentsline{toc}{chapter}{{\numberline{}\listfigurename}}
+	\fi
+
+	%-- popis tablica
+	\iftotaltables	% ako ima koja tablica u radu
+		\ifpdf
+			\phantomsection
+		\fi
+		\listoftables
+		\addcontentsline{toc}{chapter}{{\numberline{}\listtablename}}
+	\fi
+	
+	
+	%-- popis oznaka
+%	\clearpage
 %	\ifpdf
 %		\phantomsection
 %	\fi
 %	\printnomenclature	
-%
-%	\ifdefstring{\FSBjezik}{croatian}{
+
+%	\ifdefstring{\@language}{croatian}{
 %		\printglossary[type=\acronymtype, nonumberlist, title={Popis kratica}, toctitle={Popis kratica}]
 %	}{
 %		\printglossary[type=\acronymtype, nonumberlist]
 %	}
-%	
-%}
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	SVE NASLOVNE STRANE RADA I SADRZAJI
-%%----------------------------------------------------------------------------------------
-%\newcommand{\NaslovnaStrana}{
-%	% ucitavenj naslovnih strana ovisno o tipu rada
-%	\ifdefstring{\FSBtype}{seminar}{
-%		\NaslovnaSeminar
-%		\pagebreak
-%		\newgeometry{margin=25mm}
-%		\ifdefempty{\@zadatak}{}{ \includepdf[pages={1}]{\@zadatak} }
-%	}{}
-%	\ifdefstring{\FSBtype}{zavrsni}{
-%		\KoriceZavrsniDiplomskiProjekt
-%		\NaslovnaZavrsniDiplomskiProjekt
-%		\pagebreak
-%		\newgeometry{margin=25mm}
-%		\stranicaZahvala
-%		\includepdf[pages={1}]{\@zadatak}
-%	}{}
-%	\ifdefstring{\FSBtype}{diplomski}{
-%		\KoriceZavrsniDiplomskiProjekt
-%		\NaslovnaZavrsniDiplomskiProjekt
-%		\pagebreak
-%		\newgeometry{margin=25mm}
-%		\includepdf[pages={1}]{\@zadatak}
-%	}{}
-%	\ifdefstring{\FSBtype}{projekt}{	
-%		\KoriceZavrsniDiplomskiProjekt
-%		\NaslovnaZavrsniDiplomskiProjekt
-%		\pagebreak
-%		\newgeometry{margin=25mm}
-%		\ifdefempty{\@zadatak}{}{ \includepdf[pages={1}]{\@zadatak} }
-%	}{}
-%	\ifdefstring{\FSBtype}{disertacija}{	
-%		\KoriceDisertacija
-%		\NaslovnaDisertacija
-%	}{}
-%	\ifdefstring{\FSBtype}{skripta}{	
-%		\KoriceSkripta
-%		\pagebreak
-%	}{}
-%
-%	% sadrzaj, popis slika, tablica, oznaka...
-%	\sadrzaj
-%
+	
+}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLEPAGE
+%----------------------------------------------------------------------------------------
+\renewcommand{\titlepage}{
+	% ucitavenj naslovnih strana ovisno o tipu rada
+	\ifthenelse{\equal{\@type}{seminar}}{
+		\TitlePageSeminar
+		\pagebreak
+		\newgeometry{margin=25mm}
+		\ifdefempty{\@Assignment}{}{ \includepdf[pages={1}]{\@Assignment} }
+	}{}
+	\ifthenelse{\equal{\@type}{zavrsni}
+			\OR \equal{\@type}{diplomski}
+			\OR \equal{\@type}{projekt}
+	}{
+		\FrontPageZavrsniDiplomskiProjekt
+		\TitlePageZavrsniDiplomskiProjekt
+		\pagebreak
+		\newgeometry{margin=25mm}
+		\AcknowledgmentPage
+		\ifdefempty{\@Assignment}{}{ \includepdf[pages={1}]{\@Assignment} }
+	}{}
+	\ifthenelse{\equal{\@type}{disertacija}}{
+		disertacija	
+	}{}
+	\ifthenelse{\equal{\@type}{skripta}}{
+		\FrontPageSkripta	
+		\pagebreak
+	}{}
+
+	\pagenumbering{roman}
+	\setcounter{page}{1}	
+
+	% sadrzaj, popis slika, tablica, oznaka...
+	\Content
+
 %	\pagestyle{fancy} % Enable default headers and footers again
-%}
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	SAZECI
-%%----------------------------------------------------------------------------------------
-%\newenvironment{sazetak}{
-%	\ifpdf
-%		\phantomsection
-%	\fi
-%	\chapter*{Sažetak}
-%	\addcontentsline{toc}{chapter}{\numberline{}Sažetak}
-%}{
-%\newline
-%\textbf{Ključne riječi:} \@kljucnerijeci
-%\pagebreak
-%}
-%
-%
-%\renewenvironment{abstract}{
-%	\ifpdf
-%		\phantomsection
-%	\fi
-%	\chapter*{Abstract}
-%	\addcontentsline{toc}{chapter}{\numberline{}Abstract}
-%}{
-%\newline
-%\textbf{Keywords:} \@keywords
-%\pagebreak
-%}
-%
-%
-%%----------------------------------------------------------------------------------------
-%%	ZADATAK ZA SEMINAR
-%%----------------------------------------------------------------------------------------
-%\newenvironment{SeminarskiZadatak}[1][\unskip]
-%{
-%	\newpage	
-%	\par
-%	%\thispagestyle{empty}
-%	\addcontentsline{toc}{chapter}{\numberline{}Zadatak #1}
-%	\begin{center}
-%		\LARGE\bfseries\MakeUppercase{Seminarski zadatak}
-%	\end{center}
-%	{\large
-%	\noindent Kolegij: \hfill \textbf{\@kolegij}\\[5pt]
-%	Student: \hfill \textbf{#1}\\[-5mm]}
-%	\hrule
-%	\vspace{5mm}
-%	{\large\noindent\textbf{Zadatak:}\\[-5mm]}
-%	
-%}{
-%%\newline
-%\vfill\hrule
-%\vspace{3mm}
-%{\noindent\large Zadao: \textbf{\@author} \hfill Potpis: \hspace{40mm}}
-%\vspace{3mm}\hrule
-%\pagebreak
-%}
-%
+}
+
+
+
 %
 %%----------------------------------------------------------------------------------------
 %%	SECTION STYLING

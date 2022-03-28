@@ -2,7 +2,7 @@
 % moguce opcije su:
 %	-> tip_rada: seminar, zavrsni, projekt, diplomski
 %	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
-\documentclass[diplomski, engleski]{FSBtex}
+\documentclass[seminar]{FSBtex}
 
 \graphicspath{{slike/}}
 
@@ -25,25 +25,44 @@
 
 \TitleHR{Optimalna sinteza mehanizma tlačnog cilindra}
 \TitleEN{Optimalna sinteza mehanizma tlačnog cilindra}
-%
-%% odvje se dodaje zadatak u pdf-u ako on postoji
-%\zadatak{slike/zadatak.pdf}
+
+\KeywordsHR{dasf; fadsf; fdasf;}
+
+
+\CourseHR{Mehatronika}
+
+
+% odvje se dodaje zadatak u pdf-u ako on postoji
+\Assignment{slike/zadatak.pdf}
+
+% zahvala
+\Acknowledgment{
+Izjavljujem da sam ovaj rad izradio samostalno koristeći stečena znanja tijekom studija i navedenu literaturu.\\
+
+Zahvaljujem se svom mentoru \textbf{prof. dr. sc. Peri Periću} što mi je omogućio da napišem ovaj rad......
+}
 
 
 %----------------------------------------------------------------------------------------
 %	POCETAK DOKUMENTA
 %----------------------------------------------------------------------------------------
 \begin{document}
-\FrontPageZavrsniDiplomskiProjekt
-\TitlePageSeminar
+\titlepage
 
-\newpage
 
-\tableofcontents
 
-\newpage
-dasfadsf
+\begin{AbstractHR}
+sazetak na hrvatskom
+\end{AbstractHR}
 
+\begin{AbstractEN}
+sazetak na engleskom
+\end{AbstractEN}
+
+
+\begin{SeminarAssignment}
+dsafdsaf dsfadsf dasf 
+\end{SeminarAssignment}
 
 
 

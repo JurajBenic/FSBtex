@@ -12,16 +12,15 @@
 			{\includegraphics[height=3.45cm]{Definitions/unizg_eng.eps}}
 	\end{center}
 	\begin{center}
-		{\large \ifdefstring{\@language}{croatian}{\MakeUppercase\@fsbHR}{\MakeUppercase\@fsbEN}}
+		{\large \ifdefstring{\@language}{croatian}{\MakeUppercase\@fsbHR}{\MakeUppercase\@fsbEN}}%
 	\end{center}
 	\vfill
 	\begin{center}
-		{\LARGE \textbf{\ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}}
-		
+		{\LARGE \textbf{\ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}}\\%
 		% ako je definiran naslov rada		
 		\ifdefempty{\@title}{}{
 			\vspace*{5mm}
-			\Large \textsc{ \ifdefstring{\@language}{croatian}{\@TitleHR}{\@TitleEN}}
+			\Large \textsc{\ifdefstring{\@language}{croatian}{\@TitleHR}{\@TitleEN}}%
 		}
 	\end{center}
 	\vfill		
@@ -38,11 +37,11 @@
 			}
 		}{%
 			\ifdefempty{\@CoMentorEN}{
-				Mentor:\\[6pt]
+				Supervisor:\\[6pt]
 				\@MentorEN		
 			}
 			{
-				Mentori:\\[6pt]
+				Supervisors:\\[6pt]
 				\@MentorEN\\
 				\@CoMentorEN
 			}
@@ -59,3 +58,76 @@
 	\textsc{Zagreb, \the\year{}\ifdefstring{\@language}{croatian}{.}{}}
 	\end{center}
 }
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE FOR SEMINAR, MASTER'S AND BACHELOR'S THESIS
+%----------------------------------------------------------------------------------------
+\newcommand{\TitlePageZavrsniDiplomskiProjekt}{
+	\newgeometry{margin=30mm}
+	\newpage
+    \thispagestyle{empty}
+	\begin{center}
+		\null
+		\ifdefstring{\@language}{croatian}
+			{\large\MakeUppercase{\@unizgHR}}
+			{\large\MakeUppercase{\@unizgEN}}
+	\end{center}
+	\begin{center}
+		\large\ifdefstring{\@language}{croatian}{\MakeUppercase\@fsbHR}{\MakeUppercase\@fsbEN}
+	\end{center}
+	\vfill
+	\begin{center}
+		{\LARGE\textbf{\ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}} % tip rada
+	\end{center}
+	\vfill
+	\begin{minipage}[t]{7cm}	% mentori
+		\ifdefstring{\@language}{croatian}{%
+			\ifdefempty{\@CoMentorHR}{
+				Mentor:\\[6pt]
+				\@MentorHR			
+			}
+			{
+				Mentori:\\[6pt]
+				\@MentorHR\\
+				\@CoMentorHR
+			}
+		}{%
+			\ifdefempty{\@CoMentorEN}{
+				Supervisor:\\[6pt]
+				\@MentorEN		
+			}
+			{
+				Supervisors:\\[6pt]
+				\@MentorEN\\
+				\@CoMentorEN
+			}
+		}
+	\end{minipage} \hfill 
+	\begin{minipage}[t]{7cm}
+		\begin{flushright} 
+			\hfill Student:\\[6pt]
+			\@Author
+		\end{flushright}
+	\end{minipage}
+	\vfill
+	\begin{center}
+	\textsc{Zagreb, \the\year{}\ifdefstring{\@language}{croatian}{.}{}}
+	\end{center}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

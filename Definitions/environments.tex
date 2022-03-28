@@ -1,0 +1,58 @@
+%----------------------------------------------------------------------------------------
+%	SEMINAR ASSIGNMENT
+%----------------------------------------------------------------------------------------
+\newenvironment{SeminarAssignment}[1][\unskip]
+{
+	\newpage	
+	\par
+	%\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{\numberline{}Zadatak #1}
+	\begin{center}
+		\LARGE\bfseries\MakeUppercase{Seminarski zadatak}
+	\end{center}
+	{\large
+	\noindent Kolegij: \hfill \textbf{\@CourseHR}\\[5pt]
+	Student: \hfill \textbf{#1}\\[-2mm]}
+	\hrule
+	\vspace{5mm}
+	{\large\noindent\textbf{Zadatak:}\\[-5mm]}
+	
+}{
+%\newline
+\vfill\hrule
+\vspace{3mm}
+{\noindent\large Zadao: \textbf{\@Author} \hfill Potpis: \hspace{40mm}}
+\vspace{3mm}\hrule
+\pagebreak
+}
+
+
+%----------------------------------------------------------------------------------------
+%	Abstracts
+%----------------------------------------------------------------------------------------
+\newenvironment{AbstractHR}{
+	\ifpdf
+		\phantomsection
+	\fi
+	\chapter*{Sažetak}
+	\addcontentsline{toc}{chapter}{\numberline{}Sažetak}
+}{
+\vspace{10mm}
+
+\noindent\textbf{Ključne riječi:} \@KeywordsHR
+\pagebreak
+}
+
+
+\newenvironment{AbstractEN}{
+	\ifpdf
+		\phantomsection
+	\fi
+	\chapter*{Abstract}
+	\addcontentsline{toc}{chapter}{\numberline{}Abstract}
+}{
+\vspace{10mm}
+
+\noindent\textbf{Keywords:} \@KeywordsEN
+\pagebreak
+}
