@@ -50,6 +50,7 @@
 %\RequirePackage{titlesec}
 
 \RequirePackage{avant} 
+%\RequirePackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
 
 %\RequirePackage{tabto} % To use tab for alignment on first page
 
@@ -64,6 +65,11 @@
 %\RequirePackage[]{tocloft} % For dots in TOC. If subfigure package is loaded, the subfigure option needs to be added here to avoid clash: \RequirePackage[subfigure]{tocloft}
 %\RequirePackage{enotez} % For endnotes
 
+\RequirePackage{fancyhdr}
+\RequirePackage{url}
+\RequirePackage{siunitx}	% si jedinice
+
+
 \RequirePackage[toc]{appendix}
 \RequirePackage[toc, numberline, acronym]{glossaries} 
 
@@ -77,7 +83,10 @@
 %	showframe, % Uncomment to show how the type block is set on the page
 }
 
-
+\sisetup{
+	inter-unit-product=\ensuremath{{}\cdot{}},
+	per-mode=symbol
+} 
 
 %----------------------------------------------------------------------------------------
 %	CLASS IDENTIFICATION 
@@ -94,13 +103,17 @@
 \DeclareOption{hrvatski}{\gdef\@language{croatian}}
 \DeclareOption{engleski}{\gdef\@language{english}}
 
+% opcija za prikaz linkova u pdf-u
+\DeclareOption{web}{\gdef\@links{true}}
+\DeclareOption{print}{\gdef\@links{false}}
+
 % opcije za dizajn
 \DeclareOption{fancy}{\gdef\@style{fancy}}
 % dodat opcije za razlicite dizajne
 
 % Defaults
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
-\ExecuteOptions{12pt, seminar, hrvatski}
+\ExecuteOptions{12pt, seminar, hrvatski, web}
 \ProcessOptions\relax
 
 
@@ -110,6 +123,19 @@
 %----------------------------------------------------------------------------------------
 \RequirePackage[\@language]{babel}
 \RequirePackage[intoc, \@language]{nomencl} 
+
+\RequirePackage[unicode=true,
+	bookmarksopen={true},
+	bookmarksnumbered=true,
+	pdffitwindow=true, 
+	colorlinks=\@links, 
+	linkcolor=blue, 
+	filecolor=red,
+	citecolor=ocre, 
+	urlcolor=blue, 
+	linktocpage=true, 
+	pdfstartview={FitH},
+	pdfpagemode= UseOutlines]{hyperref}
 
 
 
@@ -179,18 +205,16 @@
 
 
 
-%\newcommand{\LiteraturaPostavke}{
-%	\newpage
-%	\ifpdf
-%		\phantomsection
-%	\fi
-%	\bibliographystyle{unsrt} %abbrv ieeetr unsrt babamspl babplain
-%
-%%	\renewcommand\bibname{\ifdefstring{\FSBjezik}{croatian}{Literatura}{Bibliography}}
-%	\addcontentsline{toc}{chapter}{{\numberline{}\bibname}}
-%}
-%
-%
+%----------------------------------------------------------------------------------------
+%	CROATINA TERMS
+%----------------------------------------------------------------------------------------
+\addto\captionscroatian{%
+  \def\bibname{Literatura}%
+}
+
+
+
+
 %%----------------------------------------------------------------------------------------
 %%	NAZVIVI TEOREMA, DEFINICIJA I SL. OVISNO O JEZIKU
 %%----------------------------------------------------------------------------------------
@@ -203,18 +227,6 @@
 %
 
 
-%%----------------------------------------------------------------------------------------
-%%   LANGUAGE AND FONTS
-%%----------------------------------------------------------------------------------------
-%\RequirePackage[\FSBjezik]{babel}
-%
-%\RequirePackage{avant} % Use the Avantgarde font for headings
-%
-%%\usepackage{mathptmx} % Use the Adobe Times Roman as the default text font together with math symbols from the Sym­bol, Chancery and Com­puter Modern fonts
-%
-%\addto\captionscroatian{%
-%  \def\bibname{Literatura}%
-%}
 
 
 %----------------------------------------------------------------------------------------
@@ -236,86 +248,13 @@
 %----------------------------------------------------------------------------------------
 
 
-%%----------------------------------------------------------------------------------------
-%%	HEADERS AND FOOTERS
-%%----------------------------------------------------------------------------------------
-%\RequirePackage{fancyhdr} % Required for customizing headers and footers
-%
-%%header i footer za zavrsni, diplomski i projekt
-%\newcommand{\FootHeadDipZavPro}{
-%	\fancyhf{}
-%	\renewcommand{\headrulewidth}{0.5pt}
-%	\renewcommand{\footrulewidth}{0.5pt}
-%	
-%	% header
-%	\fancyhead[R]{
-%		\footnotesize \textit{\ifdefstring{\FSBjezik}{croatian}{\TipRada}{\TipRadaEN}}
-%	}
-%	\fancyhead[L]{\footnotesize \textit{\@author}}
-%	
-%	% footer
-%	\fancyfoot[R]{\footnotesize \textit{\thepage}}
-%	\fancyfoot[L]{\footnotesize \textit{\ifdefstring{\FSBjezik}{croatian}{\FSB}{\FSBen}}}
-%}
-%
-%\newcommand{\FootHeadSeminarZadatak}{
-%	\pagestyle{fancy}
-%	\fancyhf{}
-%	\lhead{\includegraphics[scale=.5]{fsb_logo_n.png}}
-%	\rhead{Ak. god. \@AKgodina}
-%	\renewcommand{\headrulewidth}{0.4pt}
-%}
-%
-%% footer za sve ostalo
-%\newcommand{\Foot}{
-%	\renewcommand{\footrulewidth}{0pt} % Line at the header invisible
-%	\fancyfoot[C]{\rule{2cm}{.3pt}\relax\\\footnotesize\thepage}%
-%}
-%
-%
-%% promjena headera i footera za stranicu poglavlja
-%\fancypagestyle{plain}{	
-%	\ifdefstring{\FSBtype}{zavrsni}{\FootHeadDipZavPro}{
-%	\ifdefstring{\FSBtype}{diplomski}{\FootHeadDipZavPro}{
-%	\ifdefstring{\FSBtype}{projekt}{\FootHeadDipZavPro}{
-%		\fancyhf{} % sve oostale stranice poglavlja
-%		\renewcommand{\headrulewidth}{0pt}
-%		\Foot	
-%	}}}
-%}
-%
-%
-%\pagestyle{fancy} % Enable the custom headers and footers
-%
-%
-%\fancyhf{}	% makni stari izgled zaglavlja i podnozja
-%\ifdefstring{\FSBtype}{zavrsni}{\FootHeadDipZavPro}{
-%\ifdefstring{\FSBtype}{diplomski}{\FootHeadDipZavPro}{
-%\ifdefstring{\FSBtype}{projekt}{\FootHeadDipZavPro}{
-%	\fancyhead[R]{\footnotesize \leftmark}
-%	\Foot
-%}}}
-%
-%
-%
-%
-%% broj stranice na dnu
-%%\fancyfoot[C]{\rule{2cm}{.3pt}\relax\\\sffamily\thepage}%
-%%\renewcommand{\headrulewidth}{0.5pt}% Line at the header
-%
-%
-%%\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.~#1}{}} % Redefine the styling of the current chapter name in the header
-%%\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection~#1}{}} % Redefine the styling of the current section name in the header
-%
-%
-%%\fancyhead[R]{\footnotesize \leftmark}
-%%\fancyhead[R]{\fancyplain{}{\footnotesize \hfill{\textsf{\leftmark}}\hspace*{.3cm}
-%	%   \textsf{\bfseries\thepage}\\\vspace*{-7pt}\hfill\rule{2cm}{.3pt}}}
-%
-%%\usepackage{emptypage} % This package removes headers and footers on empty pages between chapters
-%
-%
-%
+%----------------------------------------------------------------------------------------
+%	HEADERS AND FOOTERS
+%----------------------------------------------------------------------------------------
+\input{Definitions/headers_footers.tex}
+
+
+
 %%----------------------------------------------------------------------------------------
 %%	POPIS OZNAKA I KRATICA
 %%----------------------------------------------------------------------------------------
@@ -365,7 +304,6 @@
 	\end{flushright}
 	\vspace*{\fill}   
 }
-
 
 
 
@@ -436,6 +374,7 @@
 		\newgeometry{margin=25mm}
 		\AcknowledgmentPage
 		\ifdefempty{\@Assignment}{}{ \includepdf[pages={1}]{\@Assignment} }
+		\HeaderFototerZavrsniDiplomskiProjekt
 	}{}
 	\ifthenelse{\equal{\@type}{disertacija}}{
 		disertacija	
@@ -444,6 +383,8 @@
 		\FrontPageSkripta	
 		\pagebreak
 	}{}
+	
+	
 
 	\pagenumbering{roman}
 	\setcounter{page}{1}	
@@ -451,8 +392,11 @@
 	% sadrzaj, popis slika, tablica, oznaka...
 	\Content
 
-%	\pagestyle{fancy} % Enable default headers and footers again
+	\pagestyle{fancy} % Enable default headers and footers again
 }
+
+
+
 
 
 
@@ -830,51 +774,40 @@
 %\newenvironment{example}{\begin{eBox}\begin{exampleT}}{\end{exampleT}\end{eBox}}
 %\renewenvironment{proof}{\begin{pBox}\begin{proofT}}{\hfill{\color{FSBorange}\tiny\ensuremath{\blacksquare}}\end{proofT}\end{pBox}}
 %
-%%----------------------------------------------------------------------------------------
-%%	OSTALI KORISNI PAKETI I POSTAVKE
-%%----------------------------------------------------------------------------------------
-%% postavke
-%\linespread{1.3}
-%
-%% paketi
-%\RequirePackage{tikz}
-%\RequirePackage{url}
-%
-%\RequirePackage{siunitx}	% si jedinice
-%% postavke si jedinica
-%\sisetup{
-%  inter-unit-product=\ensuremath{{}\cdot{}},
-%  per-mode=symbol
-%} 
-%
-%
-%
-%\RequirePackage[pdftex,
-%	colorlinks=true,
-%	linkcolor=blue,
-%	filecolor=red,
-%	citecolor=blue,
-%	pdfsubject={\TipRada},
-%	pdfauthor={\@author},
-%	pdfstartview=FitV,
-%	pdfpagemode=UseOutlines,
-%	linktocpage=true,
-%	bookmarksnumbered=true]{hyperref}
-%
-%%\RequirePackage{hyperref}
-%
-%%\hypersetup{
-%%	colorlinks=true, % Whether to color links (a thin box is output around links if this is false)
-%%	%hidelinks, % Hide the default boxes around links
-%%	urlcolor=ocre, % Color for \url and \href links
-%%	linkcolor=black, % Color for \ref/\nameref links
-%%	citecolor=ocre, % Color for reference citations like \cite{}
-%%	hyperindex=true, % Adds links from the page numbers in the index to the relevant page
-%%	linktoc=all, % Link from section names and page numbers in the table of contents
-%%}
-%
-%
-%
+
+%----------------------------------------------------------------------------------------
+%	SETTINGS
+%----------------------------------------------------------------------------------------
+\linespread{1.3}
+
+
+\newcommand{\LiteratureSettings}{
+	\newpage
+	\ifpdf
+		\phantomsection
+	\fi
+	\bibliographystyle{unsrt} %abbrv ieeetr unsrt babamspl babplain
+	\addcontentsline{toc}{chapter}{{\numberline{}\bibname}}
+}
+
+
+\newcommand{\PageNumberingArabic}{
+	\pagebreak
+	\pagenumbering{arabic}
+	\setcounter{page}{1}	
+}
+
+
+\hypersetup{
+		pdftitle={\@TitleHR},
+%		pdfsubject={\@abstract},
+		pdfkeywords={\@KeywordsHR},
+		pdfauthor={\@Author}
+	}
+
+
+
+
 %\makeatletter
 %\makeatother
 

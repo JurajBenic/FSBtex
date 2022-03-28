@@ -1,0 +1,108 @@
+%----------------------------------------------------------------------------------------
+%	HEADER AND FOOTER FOR MASTER'S AND BACHELOR'S THESIS
+%----------------------------------------------------------------------------------------
+\newcommand{\HeaderFototerZavrsniDiplomskiProjekt}{
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0.5pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+	
+	% header
+	\fancyhead[R]{
+		\footnotesize\textit{\ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}
+	}
+	\fancyhead[L]{\footnotesize\textit{\@Author}}
+	
+	% footer
+	\fancyfoot[R]{\footnotesize\textit{\thepage}}
+	\fancyfoot[L]{\footnotesize\textit{\ifdefstring{\@language}{croatian}{\@fsbHR}{\@fsbEN}}}
+	
+	\fancypagestyle{plain}{	% za stranicu poglavlja
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0.5pt}
+		\renewcommand{\footrulewidth}{0.5pt}
+		
+		% header
+		\fancyhead[R]{
+			\footnotesize\textit{\ifdefstring{\@language}{croatian}{\@TypeTextHR}{\@TypeTextEN}}
+		}
+		\fancyhead[L]{\footnotesize\textit{\@Author}}
+		
+		% footer
+		\fancyfoot[R]{\footnotesize\textit{\thepage}}
+		\fancyfoot[L]{\footnotesize\textit{\ifdefstring{\@language}{croatian}{\@fsbHR}{\@fsbEN}}}
+	}
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER AND FOOTER FOR SEMINAR
+%----------------------------------------------------------------------------------------
+
+
+
+%----------------------------------------------------------------------------------------
+%	HEADER AND FOOTER FOR SEMINAR ASSIGNMENT
+%----------------------------------------------------------------------------------------
+\newcommand{\HeaderFototerSeminarAssignment}{
+	\pagestyle{fancy}
+	\fancyhf{}
+	\lhead{\includegraphics[scale=.5]{Definitions/fsb_logo_n.png}}
+	\rhead{Ak. god. \@AcademicYear}
+	\renewcommand{\headrulewidth}{0.4pt}
+}
+
+\ifthenelse{\equal{\@type}{zadatak}}{
+	\HeaderFototerSeminarAssignment
+}{}
+
+
+
+
+
+%% footer za sve ostalo
+%\newcommand{\Foot}{
+%	\renewcommand{\footrulewidth}{0pt} % Line at the header invisible
+%	\fancyfoot[C]{\rule{2cm}{.3pt}\relax\\\footnotesize\thepage}%
+%}
+%
+%
+%% promjena headera i footera za stranicu poglavlja
+%\fancypagestyle{plain}{	
+%	\ifdefstring{\FSBtype}{zavrsni}{\FootHeadDipZavPro}{
+%	\ifdefstring{\FSBtype}{diplomski}{\FootHeadDipZavPro}{
+%	\ifdefstring{\FSBtype}{projekt}{\FootHeadDipZavPro}{
+%		\fancyhf{} % sve oostale stranice poglavlja
+%		\renewcommand{\headrulewidth}{0pt}
+%		\Foot	
+%	}}}
+%}
+%
+%
+%\pagestyle{fancy} % Enable the custom headers and footers
+%
+%
+%\fancyhf{}	% makni stari izgled zaglavlja i podnozja
+%\ifdefstring{\FSBtype}{zavrsni}{\FootHeadDipZavPro}{
+%\ifdefstring{\FSBtype}{diplomski}{\FootHeadDipZavPro}{
+%\ifdefstring{\FSBtype}{projekt}{\FootHeadDipZavPro}{
+%	\fancyhead[R]{\footnotesize \leftmark}
+%	\Foot
+%}}}
+%
+%
+%
+%
+%% broj stranice na dnu
+%%\fancyfoot[C]{\rule{2cm}{.3pt}\relax\\\sffamily\thepage}%
+%%\renewcommand{\headrulewidth}{0.5pt}% Line at the header
+%
+%
+%%\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.~#1}{}} % Redefine the styling of the current chapter name in the header
+%%\renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection~#1}{}} % Redefine the styling of the current section name in the header
+%
+%
+%%\fancyhead[R]{\footnotesize \leftmark}
+%%\fancyhead[R]{\fancyplain{}{\footnotesize \hfill{\textsf{\leftmark}}\hspace*{.3cm}
+%	%   \textsf{\bfseries\thepage}\\\vspace*{-7pt}\hfill\rule{2cm}{.3pt}}}
+%
