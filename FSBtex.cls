@@ -31,6 +31,7 @@
 \RequirePackage[utf8]{inputenc}
 
 \RequirePackage{geometry}
+\RequirePackage{indentfirst}	% tab na pocetku poglavlja
 
 % packages for graphicx, floats (gifures, tables ...), color, and drawing
 \RequirePackage{graphicx, epstopdf}
@@ -119,6 +120,7 @@
 \DeclareOption{titleplain}{\gdef\@titleStyle{plain}}
 \DeclareOption{titlealter}{\gdef\@titleStyle{alter}}
 \DeclareOption{titlefancy}{\gdef\@titleStyle{fancy}}
+\DeclareOption{titlefancyfigure}{\gdef\@titleStyle{fancyfigure}}
 
 
 \ifdefempty{\@titleStyle}{\gdef\@titleStyle{\@style}}{}

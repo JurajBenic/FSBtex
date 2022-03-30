@@ -2,7 +2,10 @@
 % moguce opcije su:
 %	-> tip_rada: seminar, zavrsni, projekt, diplomski
 %	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
-\documentclass[zavrsni, alter]{FSBtex}
+\documentclass[zavrsni, alter, titlefancy]{FSBtex}
+
+\usepackage{lipsum}
+
 
 \graphicspath{{slike/}}
 
@@ -61,11 +64,14 @@ sazetak na engleskom
 
 \PageNumberingArabic
 \newpage
-\chapter{daskipfjokia dfa da fdafadsf dafdaf fad ffadf adsfadsfa}
-sadfdasfds fasd fads fdas fdas fdas f
+\chapter{Uvod rada}
+\lipsum[1]
 \section{miki pero}
+\lipsum[1]
+\subsection{sdfasd}
+\subsubsection{dsafdasf}
 
-
+\subsection*{proba}
 
 
 \end{document}
