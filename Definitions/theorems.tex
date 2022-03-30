@@ -1,3 +1,57 @@
+%----------------------------------------------------------------------------------------
+%	NAMES OF TEOREM, DEFINITION ...
+%----------------------------------------------------------------------------------------
+\gdef\@Theorem{\ifdefstring{\@language}{croatian}{Teorem}{Theorem}}
+\gdef\@Definition{\ifdefstring{\@language}{croatian}{Definicija}{Definition}}
+\gdef\@Example{\ifdefstring{\@language}{croatian}{Primjer}{Example}}
+\gdef\@Exercise{\ifdefstring{\@language}{croatian}{Zadatak}{Exercise}}
+\gdef\@Proof{\ifdefstring{\@language}{croatian}{Dokaz}{Proof}}
+
+%----------------------------------------------------------------------------------------
+%	PLAIN THEOREM STYLE
+%----------------------------------------------------------------------------------------
+\ifthenelse{\equal{\@theoremStyle}{plain}}
+{
+	\newtheoremstyle{plainBox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\hspace{-15pt}\small\sffamily\bfseries\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+	\thmnote{\the\thm@notefont\sffamily\bfseries\color{black}\itshape~#3.\hspace{0.25em}}\newline} 
+	
+	\theoremstyle{plainBox}
+	\newtheorem{theoremeT}{\@Theorem}[chapter]
+	\newtheorem{definitionT}{\@Definition}[chapter]
+
+	
+	\newmdenv[
+		skipabove=10pt, % Whitespace above box
+		skipbelow=7pt, % Whitespace below box
+		linewidth=0pt,
+		leftmargin=5pt, % Outside left margin width
+		rightmargin=5pt, % Outside right margin width
+	]{plainBoxEnv}
+
+	\newenvironment{theorem}{\begin{plainBoxEnv}\begin{theoremeT}}{\hfill{\color{black}\tiny\ensuremath{\blacksquare}}\end{theoremeT}\end{plainBoxEnv}}
+	\newenvironment{definition}{\begin{plainBoxEnv}\begin{definitionT}}{\hfill{\color{black}\tiny\ensuremath{\blacksquare}}\end{definitionT}\end{plainBoxEnv}}
+}
+{}
+
+
+%	\newmdtheoremenv[skipabove=10pt, % Whitespace above box
+%%		skipbelow=7pt, % Whitespace below box
+%		linewidth=0pt,
+%		leftmargin=5pt, % Outside left margin width
+%		rightmargin=5pt, % Outside right margin width
+%		innerleftmargin=10pt,]{theorem}%
+%		{\@Theorem}[chapter]%
+
+
+
 %%----------------------------------------------------------------------------------------
 %%	TEOREMI, DEFINICIJE I SLICNE STVARI
 %%----------------------------------------------------------------------------------------

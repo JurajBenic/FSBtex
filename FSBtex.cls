@@ -43,6 +43,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{multirow}
 \RequirePackage{tikz}
+\RequirePackage[framemethod=TikZ]{mdframed}
 
 % fonts
 \RequirePackage{amsmath, amsfonts, amssymb, amsthm} % For math equations, theorems, symbols, etc
@@ -122,9 +123,12 @@
 \DeclareOption{titlefancy}{\gdef\@titleStyle{fancy}}
 \DeclareOption{titlefancyfigure}{\gdef\@titleStyle{fancyfigure}}
 
-
 \ifdefempty{\@titleStyle}{\gdef\@titleStyle{\@style}}{}
 
+\gdef\@theoremStyle{}
+\DeclareOption{theoremplain}{\gdef\@theoremStyle{plain}}
+
+\ifdefempty{\@theoremStyle}{\gdef\@theoremStyle{\@style}}{}
 
 % Defaults
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
@@ -226,17 +230,6 @@
 \addto\captionscroatian{%
   \def\bibname{Literatura}%
 }
-
-
-
-%----------------------------------------------------------------------------------------
-%	NAMES OF TEOREM, DEFINITION ...
-%----------------------------------------------------------------------------------------
-\gdef\@Theorem{\ifdefstring{\@language}{croatian}{Teorem}{Theorem}}
-\gdef\@Definition{\ifdefstring{\@language}{croatian}{Definicija}{Definition}}
-\gdef\@Example{\ifdefstring{\@language}{croatian}{Primjer}{Example}}
-\gdef\@Exercise{\ifdefstring{\@language}{croatian}{Zadatak}{Exercise}}
-\gdef\@Proof{\ifdefstring{\@language}{croatian}{Dokaz}{Proof}}
 
 
 
