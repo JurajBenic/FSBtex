@@ -413,13 +413,7 @@
 	\Content
 
 	\pagestyle{fancy} % Enable default headers and footers again
-	\@titleStyle
 }
-
-
-
-
-
 
 
 
