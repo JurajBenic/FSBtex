@@ -152,7 +152,7 @@
 	colorlinks=\@links, 
 	linkcolor=blue, 
 	filecolor=red,
-	citecolor=ocre, 
+	citecolor=blue, 
 	urlcolor=blue, 
 	linktocpage=true, 
 	pdfstartview={FitH},
@@ -275,38 +275,39 @@
 \input{Definitions/section_styling.tex}
 
 
+
 %----------------------------------------------------------------------------------------
-%	POPIS OZNAKA I KRATICA
+%	LIST OF NOMENCLATURE
 %----------------------------------------------------------------------------------------
-%\makenomenclature
-%\makeglossaries
-%
-%\def\thenomenclature{%
-%  \chapter*{\nomname}
-%  \if@intoc
-%  	%\addcontentsline{toc}{chapter}{\numberline{}\nomname}
-%  	\addcontentsline{toc}{chapter}{{\numberline{}\nomname}}
-%  \fi%
-%  \nompreamble
-%  \list{}{%
-%    \labelwidth\nom@tempdim
-%    \leftmargin\labelwidth
-%    \advance\leftmargin\labelsep
-%    \itemsep\nomitemsep
-%    \let\makelabel\nomlabel}}
-%
-%
-%\renewcommand\nomgroup[1]{%
-%  \item[\bfseries
-%  \ifstrequal{#1}{C}{\ifdefstring{\FSBjezik}{croatian}{Konstante}{Constants}}{%
-%  \ifstrequal{#1}{I}{\ifdefstring{\FSBjezik}{croatian}{Indeksi}{Subscripts}}{%
-%  \ifstrequal{#1}{G}{\ifdefstring{\FSBjezik}{croatian}{Grčka slova}{Greek letters}}{%
-%  \ifstrequal{#1}{T}{\ifdefstring{\FSBjezik}{croatian}{Akcenti}{Accents}}{}}}}%
-%]}
-%
-%%% dodavanje mjernih jedinica u popis oznaka
-%\newcommand{\nomunit}[1]{%
-%\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+\makenomenclature
+\makeglossaries
+
+\def\thenomenclature{%
+  \chapter*{\nomname}
+  \if@intoc
+  	%\addcontentsline{toc}{chapter}{\numberline{}\nomname}
+  	\addcontentsline{toc}{chapter}{{\numberline{}\nomname}}
+  \fi%
+  \nompreamble
+  \list{}{%
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}}
+
+
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{C}{\ifdefstring{\@language}{croatian}{Konstante}{Constants}}{%
+  \ifstrequal{#1}{I}{\ifdefstring{\@language}{croatian}{Indeksi}{Subscripts}}{%
+  \ifstrequal{#1}{G}{\ifdefstring{\@language}{croatian}{Grčka slova}{Greek letters}}{%
+  \ifstrequal{#1}{T}{\ifdefstring{\@language}{croatian}{Akcenti}{Accents}}{}}}}%
+]}
+
+%% dodavanje mjernih jedinica u popis oznaka
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 
 
 
@@ -371,6 +372,7 @@
 	}
 	
 }
+
 
 
 %----------------------------------------------------------------------------------------
