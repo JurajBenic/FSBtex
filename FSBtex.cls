@@ -127,6 +127,8 @@
 
 \gdef\@theoremStyle{}
 \DeclareOption{theoremplain}{\gdef\@theoremStyle{plain}}
+\DeclareOption{theoremalter}{\gdef\@theoremStyle{alter}}
+\DeclareOption{theoremfancy}{\gdef\@theoremStyle{fancy}}
 
 \ifdefempty{\@theoremStyle}{\gdef\@theoremStyle{\@style}}{}
 
@@ -239,8 +241,8 @@
 \definecolor{FSBblue}{RGB}{0,87,154}
 \definecolor{FSBorange}{RGB}{255,138,88}
 \definecolor{FSBforestgreen}{RGB}{21,122,81}
-\definecolor{FSGyellow}{RGB}{255,185,88}
-\definecolor{FSGgrey}{RGB}{200,200,200}
+\definecolor{FSByellow}{RGB}{255,185,88}
+\definecolor{FSBgrey}{RGB}{200,200,200}
 
 
 
