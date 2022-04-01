@@ -385,6 +385,7 @@
 		\pagebreak
 		\newgeometry{margin=25mm}
 		\ifdefempty{\@Assignment}{}{ \includepdf[pages={1}]{\@Assignment} }
+		\HeaderFototerSeminar
 	}{}
 	\ifthenelse{\equal{\@type}{zavrsni}
 			\OR \equal{\@type}{diplomski}
@@ -404,6 +405,8 @@
 	\ifthenelse{\equal{\@type}{skripta}}{
 		\FrontPageSkripta	
 		\pagebreak
+		\newgeometry{margin=25mm}
+		\HeaderFototerSkripta
 	}{}
 	
 	
@@ -414,7 +417,7 @@
 	% sadrzaj, popis slika, tablica, oznaka...
 	\Content
 
-	\pagestyle{fancy} % Enable default headers and footers again
+%	\pagestyle{fancy} % Enable default headers and footers again
 }
 
 
