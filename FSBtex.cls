@@ -118,10 +118,13 @@
 \DeclareOption{fancy}{\gdef\@style{fancy}}
 
 \gdef\@titleStyle{}
+\gdef\@titleStyleExtra{}
 \DeclareOption{titleplain}{\gdef\@titleStyle{plain}}
 \DeclareOption{titlealter}{\gdef\@titleStyle{alter}}
 \DeclareOption{titlefancy}{\gdef\@titleStyle{fancy}}
-\DeclareOption{titlefancyfigure}{\gdef\@titleStyle{fancyfigure}}
+\DeclareOption{titlefancyfigure}{\gdef\@titleStyle{fancy}
+								 \gdef\@titleStyleExtra{fancyfigure}
+								}
 
 \ifdefempty{\@titleStyle}{\gdef\@titleStyle{\@style}}{}
 
