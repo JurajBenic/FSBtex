@@ -1,0 +1,195 @@
+%----------------------------------------------------------------------------------------
+%	NAMES OF TEOREM, DEFINITION ...
+%----------------------------------------------------------------------------------------
+\gdef\@Theorem{\ifdefstring{\@language}{croatian}{Teorem}{Theorem}}
+\gdef\@Definition{\ifdefstring{\@language}{croatian}{Definicija}{Definition}}
+\gdef\@Example{\ifdefstring{\@language}{croatian}{Primjer}{Example}}
+\gdef\@Exercise{\ifdefstring{\@language}{croatian}{Zadatak}{Exercise}}
+\gdef\@Proof{\ifdefstring{\@language}{croatian}{Dokaz}{Proof}}
+
+
+
+%----------------------------------------------------------------------------------------
+%	PLAIN THEOREM STYLE
+%----------------------------------------------------------------------------------------
+\ifthenelse{\equal{\@theoremStyle}{plain}}
+{
+	\newtheoremstyle{plainBox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\hspace{-15pt}\small\bfseries\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+	\thmnote{\the\thm@notefont\bfseries\color{black}\itshape~#3.\hspace{0.25em}}\newline} 
+		
+	\newmdenv[
+		skipabove=10pt,
+		skipbelow=7pt,
+		linewidth=0pt,
+		leftmargin=5pt,
+		rightmargin=5pt,
+	]{plainBoxEnv}
+	
+	
+	\theoremstyle{plainBox}
+	\newtheorem{theoremeT}{\@Theorem}[chapter]
+	\newtheorem{definitionT}{\@Definition}[chapter]
+	\newtheorem{exampleT}{\@Example}[chapter]
+	\newtheorem{exerciseT}{\@Exercise}[chapter]
+	\newtheorem{proofT}{\@Proof}[chapter]
+
+	\newenvironment{theorem}{\begin{plainBoxEnv}\begin{theoremeT}}{\hfill{\color{black}\tiny\ensuremath{\blacksquare}}\end{theoremeT}\end{plainBoxEnv}}
+	\newenvironment{definition}{\begin{plainBoxEnv}\begin{definitionT}}{\hfill{\color{black}\tiny\ensuremath{\blacksquare}}\end{definitionT}\end{plainBoxEnv}}
+	\newenvironment{example}{\begin{plainBoxEnv}\begin{exampleT}}{\end{exampleT}\end{plainBoxEnv}}
+	\newenvironment{exercise}{\begin{plainBoxEnv}\begin{exerciseT}}{\end{exerciseT}\end{plainBoxEnv}}
+	\renewenvironment{proof}{\begin{plainBoxEnv}\begin{proofT}}{\hfill{\color{black}\tiny\ensuremath{\blacksquare}}\end{proofT}\end{plainBoxEnv}}
+		
+}
+{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	ALTER THEOREM STYLE
+%----------------------------------------------------------------------------------------
+\ifthenelse{\equal{\@theoremStyle}{alter}}
+{
+	\newtheoremstyle{plainBox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\small\bfseries\color{black}\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+	\thmnote{\the\thm@notefont\bfseries\color{black}\itshape--- #3 ---\hspace{0.25em}}} 
+		
+	\newmdenv[
+		skipabove=10pt,
+		skipbelow=7pt,
+		linewidth=0.5pt,
+		roundcorner=10pt,
+		leftmargin=5pt,
+		rightmargin=5pt,
+	]{plainBoxEnv}
+	
+	
+	\theoremstyle{plainBox}
+	\newtheorem{theoremeT}{\@Theorem}[chapter]
+	\newtheorem{definitionT}{\@Definition}[chapter]
+	\newtheorem{exampleT}{\@Example}[chapter]
+	\newtheorem{exerciseT}{\@Exercise}[chapter]
+	\newtheorem{proofT}{\@Proof}[chapter]
+
+	\newenvironment{theorem}{\begin{plainBoxEnv}\begin{theoremeT}}{\end{theoremeT}\end{plainBoxEnv}}
+	\newenvironment{definition}{\begin{plainBoxEnv}\begin{definitionT}}{\end{definitionT}\end{plainBoxEnv}}
+	\newenvironment{example}{\begin{plainBoxEnv}\begin{exampleT}}{\end{exampleT}\end{plainBoxEnv}}
+	\newenvironment{exercise}{\begin{plainBoxEnv}\begin{exerciseT}}{\end{exerciseT}\end{plainBoxEnv}}
+	\renewenvironment{proof}{\begin{plainBoxEnv}\begin{proofT}}{\end{proofT}\end{plainBoxEnv}}
+	
+}
+{}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	FANCY THEOREM STYLE
+%----------------------------------------------------------------------------------------
+\ifthenelse{\equal{\@theoremStyle}{fancy}}
+{
+
+	\newtheoremstyle{blueBox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\small\sffamily\bfseries\color{FSBblue}\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+		\thmnote{\the\thm@notefont\sffamily\bfseries\color{black}\itshape~#3.\hspace{0.25em}}} % Optional theorem note
+		
+
+	\newtheoremstyle{greeneBox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\small\sffamily\bfseries\color{FSBforestgreen}\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+		\thmnote{\the\thm@notefont\sffamily\bfseries\color{black}\itshape~#3.\hspace{0.25em}}} % Optional theorem note	
+	
+	
+	\newtheoremstyle{orangebox} % Theorem style name
+		{0pt} % Space above
+		{0pt} % Space below
+		{\normalfont} % Body font
+		{} % Indent amount
+		{} % Theorem head font
+		{} % Punctuation after theorem head
+		{0.25em} % Space after theorem head
+		{\small\sffamily\bfseries\color{FSBorange}\thmname{#1}~\thmnumber{\@ifnotempty{#1}{}\@upn{#2}} % Theorem text (e.g. Theorem 2.1)
+		\thmnote{\the\thm@notefont\sffamily\bfseries\color{black}\itshape~#3.\hspace{0.25em}}}	
+	
+	
+	\theoremstyle{blueBox}
+	\newmdtheoremenv[skipabove=10pt, skipbelow=7pt,
+		backgroundcolor=black!5,
+		linecolor=FSBblue, linewidth=1pt, roundcorner=10pt,
+		leftmargin=10pt, rightmargin=10pt,
+		innerleftmargin=10pt, innerrightmargin=10pt,]{theorem}%
+		{\@Theorem}[chapter]%
+	
+	\newmdtheoremenv[skipabove=10pt, skipbelow=7pt,
+		backgroundcolor=FSBforestgreen!5,
+		linewidth=0pt, roundcorner=10pt,
+		leftmargin=0pt, rightmargin=0pt,
+		innerleftmargin=10pt, innerrightmargin=10pt, innertopmargin=5pt, innerbottommargin=5pt]{exercise}%
+		{\@Exercise}[chapter]%	
+
+	
+	\theoremstyle{greeneBox}
+	\newmdtheoremenv[skipabove=10pt, skipbelow=7pt,
+		backgroundcolor=FSBblue!7,
+		linewidth=0pt, roundcorner=10pt,
+		leftmargin=0pt, rightmargin=0pt,
+		innerleftmargin=7pt, innerrightmargin=7pt, innertopmargin=7pt, innerbottommargin=7pt]{example}%
+		{\@Example}[chapter]%
+		
+		
+	\theoremstyle{orangebox}
+	\newmdtheoremenv[skipabove=10pt, skipbelow=7pt,
+		backgroundcolor=yellow!10!white,
+		%rightline=false, leftline=true, topline=true, bottomline=false,
+		linecolor=FSBforestgreen, linewidth=1pt, roundcorner=10pt,
+		leftmargin=10pt, rightmargin=10pt,
+		innerleftmargin=7pt, innerrightmargin=7pt, innertopmargin=7pt, innerbottommargin=7pt]{definition}%
+		{\@Definition}[chapter]%
+
+	\newtheorem{proofT}{\@Proof}[chapter]
+	\newmdenv[
+		skipabove=10pt, skipbelow=7pt,
+		rightline=false, leftline=true, topline=false, bottomline=false,
+		linecolor=FSBorange, linewidth=2pt
+		backgroundcolor=white!10,
+		innerleftmargin=5pt, innerrightmargin=5pt, innertopmargin=5pt, innerbottommargin=5pt,
+		leftmargin=10pt, rightmargin=10pt]{pBox}
+		
+	\renewenvironment{proof}{\begin{pBox}\begin{proofT}}{\hfill{\color{FSBorange}\tiny\ensuremath{\blacksquare}}\end{proofT}\end{pBox}}
+
+
+}
+{}
+
+
+
+
+
+

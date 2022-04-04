@@ -1,10 +1,6 @@
-%\documentclass[tip_rada, jezik]{FSBtex}
-% moguce opcije su:
-%	-> tip_rada: seminar, zavrsni, projekt, diplomski, zadatak, skripta
-%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
-%	-> fancy -> opcija samo za skriptu da omoguci sliku kao pozadinu poglavlja
-\documentclass[skripta]{FSBtex}
+\documentclass[skripta, fancy]{FSBtex}
 
+\graphicspath{{./slike}}
 
 \usepackage{lipsum}
 
@@ -18,15 +14,13 @@
 
 
 
-\author{Marko Markić}
+\Author{Marko Markić}
 
-\title{Skripta}
-\titleENG{Skripta engleski naslov}	% ako je na engleskom onda treba ovaj naslov
-
+\TitleHR{Skripta}
 
 
 %%%%%%%%%%%%%%
-% za fancy opciju slika svakog poglavlja
+% za titlefancyfigure opciju slika svakog poglavlja
 %%%%%%%%%%%%%%
 % sve opcije se mogu mijenjati za zvako poglavlje pozivanje pojedine opcije
 %\chapterimage{naslovna1.jpg} % slika poglavlja
@@ -37,7 +31,7 @@
 %	POCETAK DOKUMENTA
 %----------------------------------------------------------------------------------------
 \begin{document}
-\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+\titlepage	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
 
 % sve sa A se prvo ispisuje kod oznaka
 \nomenclature[A]{$s$}{klizna površina SMC regulatora \nomunit{\si{\kilogram\per\cubic\meter}}}
@@ -68,13 +62,10 @@
 %----------------------------------------------------------------------------------------
 
 % pocetak brojanja rada od prve stranice
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\PageNumberingArabic
 
-% ovdje ide ostatak rada
 %\chapterimage{naslovna2.jpg}
-%\chapterspaceabove{5.5cm} 
-%\chapterspacebelow{6.75cm}
+%\chapterspaceabove{5.5cm}
 \chapter{Quaternions \& dual quaternions dasf dsaf das fads fads fadsf agd a}
 \lipsum[1-1]
 
@@ -131,8 +122,6 @@ a = c\cdot b
 
 
 
-
-\chapterspaceabove{6.5cm}
 \chapter{Test Chapter Two}
 \acrlong{iot} \cite{dq_fkm_control}
 \section{Second section} 
@@ -144,7 +133,7 @@ a = c\cdot b
 
 
 % literatura:
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 
