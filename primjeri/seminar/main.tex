@@ -1,8 +1,4 @@
-%\documentclass[tip_rada, jezik]{FSBtex}
-% moguce opcije su:
-%	-> tip_rada: seminar, zavrsni, projekt, diplomski
-%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
-\documentclass[seminar]{FSBtex}
+\documentclass[seminar, fancy]{FSBtex}
 
 % naredbe za generiranje datoteke
 % pdflatex main.tex
@@ -14,19 +10,22 @@
 
 
 % postavke dokumenta
-\author{Marko Markić}
-\mentor{prof. dr. sc. Pero Perić, dip. ing.}
-\title{Optimalna sinteza mehanizma tlačnog cilindra}
+\Author{Marko Markić}
+\MentorHR{prof. dr. sc. Pero Perić, dip. ing.}
+\TitleHR{Optimalna sinteza mehanizma tlačnog cilindra}
 
 % odvje se dodaje zadatak u pdf-u ako on postoji
-\zadatak{slike/zadatak.pdf}
+\Assignment{slike/zadatak.pdf}
+
+
+\graphicspath{{./slike}}
 
 
 %----------------------------------------------------------------------------------------
 %	POCETAK DOKUMENTA
 %----------------------------------------------------------------------------------------
 \begin{document}
-\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+\titlepage	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
 
 
 
@@ -59,9 +58,7 @@
 %----------------------------------------------------------------------------------------
 
 % pocetak brojanja rada od prve stranice
-\pagebreak
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\PageNumberingArabic
 
 % ovdje ide ostatak rada
 \input{uvod}
@@ -71,7 +68,7 @@
 
 
 % literatura:
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 
