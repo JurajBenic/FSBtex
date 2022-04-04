@@ -28,7 +28,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	Abstracts
+%	ABSTRACTS
 %----------------------------------------------------------------------------------------
 \newenvironment{AbstractHR}{
 	\ifpdf
@@ -55,4 +55,22 @@
 
 \noindent\textbf{Keywords:} \@KeywordsEN
 \pagebreak
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+\newenvironment{remark}{%
+	\par\small % Reduce font size for remarks
+	\vspace{4pt} % Vertical whitespace
+	\begin{adjustwidth}{35pt}{25pt} % Left and right padding
+		\hspace{-2.5pt}%
+		\begin{tikzpicture}[overlay]
+			\node[draw=FSBblue!60,line width=1pt,circle,fill=FSBblue!25,font=\sffamily\bfseries,inner sep=3pt,outer sep=0pt] at (-15pt,0pt){\textcolor{FSBblue}{!}}; % Orange R in a circle
+		\end{tikzpicture}
+	\advance\baselineskip -1pt% Reduce line spacing
+}{%
+	\end{adjustwidth}
 }
