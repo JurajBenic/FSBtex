@@ -22,7 +22,7 @@ Inicijalizacija klase vrši se na slijedeći način:
 </p>
 
 ```latex
-\documentclass[tip_rada, jezik, *dodatne_opcije]{FSBtex}
+\documentclass[tip_rada, jezik, stil, stil_naslova, stil_teorema]{FSBtex}
 ```
 </br>
 gdje ulazni argument <span style="color:#00579e"><b><i>tip_rada</i></b></span> može bititi jedna os slijedećih opcija:
@@ -41,21 +41,30 @@ Dodatnu opciju moguće je definirati samo za skriptu i njen naziv je <b><i>fancy
 Ona omogućuje da se u naslov poglavlja stavi slika te se preko nje napiše naslov tog poglavlja.
 </p>
 
-## Naredbe definirane unutar FSBtex klase
+## Naredbe definirane unutar FSBtex klase sa ulaznim argumentima
 
-+ <code>\AKgodina{2021/2022.}</code> &#8594; akademska godina za seminarski rad
-+ <code>\author{Marko Markić}</code> &#8594; ime autora rada
-+ <code>\kolegij{Pneumatski i hidraulički servo sustavi}</code> &#8594; naziv kolegija za tekst seminarskog zadatka
-+ <code>\LiteraturaPostavke</code> &#8594; postavlja postavke za ispis literature
-+ <code>\NaslovnaStrana</code> &#8594; generira sve naslovne strane rada
-+ <code>\mentor{prof. dr. sc. Pero Perić}</code> &#8594; mentora rada
-+ <code>\mentorDva{prof. dr. sc. Pero Perić}</code> &#8594; komentor rada
-+ <code>\title{...}</code> &#8594; naslov rada
-+ <code>\titleENG{...}</code> &#8594; naslov rada na engleskom jeziku
-+ <code>\keywords{...}</code> &#8594; ključne riječi rada na engleskom jeziku
-+ <code>\kljucnerijeci{...}</code> &#8594; ključne riječi rada na hrvatskom jeziku
-+ <code>\zahvala{...}</code> &#8594; zahvala za diplomski i završni rad
-+ <code>\zadatak{...}</code> &#8594; učitava pdf datoteku završnog, diplomskog ili seminarskog rada
++ `\Acknowledgment{...}` &#8594; zahlava za diplomski i završni rad
++ `\AcademicYear{...}` &#8594; akademska godina
++ `\Author{...}` &#8594; ime autora rada
++ `\Assignment{...}` &#8594; zadatak u pdf-u za seminar, projekt, diplomski i završni rad
++ `\chapterimage{...}` &#8594; slika u pozadini ispod imena poglavlja
++ `\chapterspaceabove{...}` &#8594; razmak od vrha stranice do početka naslova
++ `\chapterspacebelow{...}` &#8594; razmak od donje margine do pocetka teksta
++ `\CoMentorHR{...}` &#8594; ime komentora na hrvatskom jeziku
++ `\CoMentorEN{...}` &#8594; ime komentora na engleskom jeziku
++ `\CourseHR{...}` &#8594; ime kolegija za seminarski zadatak
++ `\KeywordsHR{...}` &#8594; ključne riječi na hrvatskom jeziku
++ `\KeywordsEN{...}` &#8594; ključne riječi na engleskom jeziku
++ `\MentorHR{...}` &#8594; ime mentora na hrvatskom jeziku
++ `\MentorEN{...}` &#8594; ime mentora na engleskom jeziku
++ `\TitleHR{...}` &#8594; naslov rada na hrvatskom jeziku
++ `\TitleEN{...}` &#8594; naslov rada na engleskom jeziku
+
+## Naredbe definirane unutar FSBtex klase bez ulaznih argumenata
+
++ `\LiteratureSettings` &#8594; postavljanje postvaki za popis literature
++ `\PageNumberingArabic` &#8594; postavlja brojanje strana pomoću brojki
++ `\titlepage` &#8594; kreira sve naslovne strane rada
 
 ## Okoline definirane unutar FSBtex klase
 <p>Okolina se definira na sljedeči način i moguće joj je dodijeliti dodatne argumente:</p>
@@ -67,9 +76,9 @@ Sve što želimo da se nalazi unutar okoline
 ```
 <p>Predefinirane okoline:</p>
 
-+ <code>abstract</code> &#8594; sažetak rada na engleskom jeziku
-+ <code>sazetak</code> &#8594; sažetak rada na hrvatskom jeziku
-+ <code>SeminarskiZadatak</code> &#8594; definira izgled seminarskog zadatka; dodatni argument je ime studenta
++ <code>AbstractEN</code> &#8594; sažetak rada na engleskom jeziku
++ <code>AbstractHR</code> &#8594; sažetak rada na hrvatskom jeziku
++ <code>SeminarAssignment</code> &#8594; definira izgled seminarskog zadatka; dodatni argument je ime studenta
   <hr>
 
 + <code>theorem</code> &#8594; okolina za pisanje matematičkog teorema; dodatni argument ime teorema
@@ -87,24 +96,24 @@ Sve što želimo da se nalazi unutar okoline
 \documentclass[seminar]{FSBtex}
 
 % postavke dokumenta
-\author{Marko Markić}
-\mentor{prof. dr. sc. Pero Perić, dip. ing.}
-\title{Optimalna sinteza mehanizma tlačnog cilindra}
-\zadatak{slike/zadatak.pdf}
+\Author{Marko Markić}
+\MentorHR{prof. dr. sc. Pero Perić, dip. ing.}
+\TitleHR{Optimalna sinteza mehanizma tlačnog cilindra}
+
+% odvje se dodaje zadatak u pdf-u ako on postoji
+\Assignment{slike/zadatak.pdf}
 
 \begin{document}
-\NaslovnaStrana
+\titlepage
 
 % pocetak brojanja rada od prve stranice
-\pagebreak
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\PageNumberingArabic
 
 %-------------------------------------------
 % ovdje ide ostatak rada
 %-------------------------------------------
 
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 %-------------------------------------------
@@ -124,45 +133,40 @@ Sve što želimo da se nalazi unutar okoline
 \documentclass[zavrsni]{FSBtex}
 
 % postavke rada
-\author{Marko Markić}
-\mentor{prof. dr. sc. Miki Mikić, dip. ing.}
-\mentorDva{dr. sc. Pero perić, dip. ing.}
+\Author{Marko Markić}
+\MentorHR{prof. dr. sc. Miki Mikić, dip. ing.}
+\CoMentorHR{dr. sc. Pero perić, dip. ing.}
+\Assignment{slike/zadatak.pdf}
 
-\zahvala{
+\Acknowledgment{
 Izjavljujem da sam ovaj rad izradio samostalno koristeći stečena znanja tijekom studija i navedenu literaturu.\\
 
 Zahvaljujem se svom mentoru \textbf{prof. dr. sc. Peri Periću} što mi je omogućio da napišem ovaj rad......
 }
 
-\zadatak{slike/zadatak.pdf}
-
-\kljucnerijeci{PID; LQR; hidraulika}
-\keywords{PID; LQR; hydraulics}
+\KeywordsHR{PID; LQR; hidraulika}
+\KeywordsEN{PID; LQR; hydraulics}
 
 \begin{document}
-\NaslovnaStrana
+\titlepage
 
 % u slucaju enegleske verzije potrebno obrnut redoslijed sazetaka
-\begin{sazetak}
+\begin{AbstractHR}
 Ovdje ide sažetak rada na hrvatskom\\
-\end{sazetak}
+\end{AbstractHR}
 
-\begin{abstract}
+\begin{AbstractEN}
 Ovdje ide sažetak rada na engleskom jeziku\\
-\end{abstract}
+\end{AbstractEN}
 
-%-------------------------------------------
-%	OVDJE IDE OSTATAK RADA I SVA POGLAVLJA
-%-------------------------------------------
-\pagebreak
-\setcounter{page}{1}
-\pagenumbering{arabic}
+% pocetak brojanja rada od prve stranice
+\PageNumberingArabic
 
 %-------------------------------------------
 % ovdje ide ostatak rada
 %-------------------------------------------
 
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 %-------------------------------------------
@@ -180,49 +184,44 @@ Ovdje ide sažetak rada na engleskom jeziku\\
 ```latex
 \documentclass[zadatak]{FSBtex}
 
-\author{prof. dr. sc. Pero Perić}
-\AKgodina{2021/2022.}
-\kolegij{Pneumatski i hidraulički servo sustavi}
+\Author{prof. dr. sc. Pero Perić}
+\AcademicYear{2021/2022.}
+\CourseHR{Pneumatski i hidraulički servo sustavi}
 
 \begin{document}
-\FootHeadSeminarZadatak
 
 % primjer sa imenom studenta i slikom zadatka
-\begin{SeminarskiZadatak}[Marko Markić]
+\begin{SeminarAssignment}[Marko Markić]
 Ovdje ide tekst zadatka seminarskog za tog i tog studenta
-\end{SeminarskiZadatak}
+\end{SeminarAssignment}
 
-
-\begin{SeminarskiZadatak}[]
+\begin{SeminarAssignment}[]
 Ovdje ide tekst zadatka seminarskog rada bez imena studenta
-\end{SeminarskiZadatak}
+\end{SeminarAssignment}
 
 \end{document}
 ```
 
 ### Tip rada: skripta
 ```latex
-\documentclass[skripta, fancy]{FSBtex}
+\documentclass[skripta, fancy, titlefancyfigure]{FSBtex}
 
-\author{Marko Markić}
-\title{Skripta}
-%\titleENG{Skripta engleski naslov}	% ako je na engleskom onda treba ovaj naslov
+\Author{Marko Markić}
+\TitleHR{Skripta}
 
 
 %-------------------------------------------
-% za fancy opciju slika svakog poglavlja
+% za titlefancyfigure opciju slika svakog poglavlja
 %-------------------------------------------
-% sve opcije se mogu mijenjati za zvako poglavlje pozivanje pojedine opcije
 \chapterimage{naslovna1.jpg} % slika poglavlja
 \chapterspaceabove{6.5cm} % razmak od vrha stranice do naslova poglavlja
 \chapterspacebelow{6.75cm} % razmag ot gornje margine do pocetka teksta
 
 \begin{document}
-\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+\titlepage	
 
 % pocetak brojanja rada od prve stranice
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\PageNumberingArabic
 
 %-------------------------------------------
 % ovdje ide ostatak rada
@@ -233,8 +232,7 @@ Ovdje ide tekst zadatka seminarskog rada bez imena studenta
 \chapterspacebelow{6.75cm}
 \chapter{Naziv poglavlja}
 
-% literatura
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 %-------------------------------------------
