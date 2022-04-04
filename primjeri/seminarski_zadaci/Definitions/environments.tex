@@ -1,0 +1,76 @@
+%----------------------------------------------------------------------------------------
+%	SEMINAR ASSIGNMENT
+%----------------------------------------------------------------------------------------
+\newenvironment{SeminarAssignment}[1][\unskip]
+{
+	\newpage	
+	\par
+	%\thispagestyle{empty}
+	\addcontentsline{toc}{chapter}{\numberline{}Zadatak #1}
+	\begin{center}
+		\LARGE\bfseries\MakeUppercase{Seminarski zadatak}
+	\end{center}
+	{\large
+	\noindent Kolegij: \hfill \textbf{\@CourseHR}\\[5pt]
+	Student: \hfill \textbf{#1}\\[-2mm]}
+	\hrule
+	\vspace{5mm}
+	{\large\noindent\textbf{Zadatak:}\\[-5mm]}
+	
+}{
+%\newline
+\vfill\hrule
+\vspace{3mm}
+{\noindent\large Zadao: \textbf{\@Author} \hfill Potpis: \hspace{40mm}}
+\vspace{3mm}\hrule
+\pagebreak
+}
+
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACTS
+%----------------------------------------------------------------------------------------
+\newenvironment{AbstractHR}{
+	\ifpdf
+		\phantomsection
+	\fi
+	\chapter*{Sažetak}
+	\addcontentsline{toc}{chapter}{\numberline{}Sažetak}
+}{
+\vspace{10mm}
+
+\noindent\textbf{Ključne riječi:} \@KeywordsHR
+\pagebreak
+}
+
+
+\newenvironment{AbstractEN}{
+	\ifpdf
+		\phantomsection
+	\fi
+	\chapter*{Abstract}
+	\addcontentsline{toc}{chapter}{\numberline{}Abstract}
+}{
+\vspace{10mm}
+
+\noindent\textbf{Keywords:} \@KeywordsEN
+\pagebreak
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	REMARK ENVIRONMENT
+%----------------------------------------------------------------------------------------
+\newenvironment{remark}{%
+	\par\small % Reduce font size for remarks
+	\vspace{4pt} % Vertical whitespace
+	\begin{adjustwidth}{35pt}{25pt} % Left and right padding
+		\hspace{-2.5pt}%
+		\begin{tikzpicture}[overlay]
+			\node[draw=FSBblue!60,line width=1pt,circle,fill=FSBblue!25,font=\sffamily\bfseries,inner sep=3pt,outer sep=0pt] at (-15pt,0pt){\textcolor{FSBblue}{!}}; % Orange R in a circle
+		\end{tikzpicture}
+	\advance\baselineskip -1pt% Reduce line spacing
+}{%
+	\end{adjustwidth}
+}
