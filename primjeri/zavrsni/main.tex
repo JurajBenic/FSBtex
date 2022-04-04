@@ -1,11 +1,7 @@
-%\documentclass[tip_rada, jezik]{FSBtex}
-% moguce opcije su:
-%	-> tip_rada: seminar, zavrsni, projekt, diplomski
-%	-> jezik (dodatni parametar, moze i bez njega ako se pise na hrvatskom): hrvatski, engleski
 \documentclass[zavrsni]{FSBtex}
 
 
-\usepackage{lipsum}
+
 
 % naredbe za generiranje datoteke
 % pdflatex main.tex
@@ -17,37 +13,37 @@
 
 
 % postavke rada
-\author{Marko Markić}
+\Author{Marko Markić}
 
-\mentor{prof. dr. sc. Miki Mikić, dip. ing.}
-\mentorDva{dr. sc. Pero perić, dip. ing.}
+\MentorHR{prof. dr. sc. Miki Mikić, dip. ing.}
+\CoMentorHR{dr. sc. Pero perić, dip. ing.}
 
-\zahvala{
+\Acknowledgment{
 Izjavljujem da sam ovaj rad izradio samostalno koristeći stečena znanja tijekom studija i navedenu literaturu.\\
 
 Zahvaljujem se svom mentoru \textbf{prof. dr. sc. Peri Periću} što mi je omogućio da napišem ovaj rad......
 }
 
 
-\zadatak{slike/zadatak.pdf}
+\Assignment{slike/zadatak.pdf}
 
-\kljucnerijeci{PID; LQR; hidraulika}
-\keywords{PID; LQR; hydraulics}
+\KeywordsHR{PID; LQR; hidraulika}
+\KeywordsEN{PID; LQR; hydraulics}
 
 %----------------------------------------------------------------------------------------
 %	POCETAK DOKUMENTA
 %----------------------------------------------------------------------------------------
 \begin{document}
-\NaslovnaStrana	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
+\titlepage	% ova naredba ukljucuje sve naslovne strane rada ovisno o tipu rada, te sadrzaj i popise slika i tablica
 
 % u slucaju enegleske verzije potrebno obrnut redoslijed sazetaka
-\begin{sazetak}
+\begin{AbstractHR}
 Ovdje ide sažetak rada na hrvatskom\\
-\end{sazetak}
+\end{AbstractHR}
 
-\begin{abstract}
+\begin{AbstractEN}
 Ovdje ide sažetak rada na engleskom jeziku\\
-\end{abstract}
+\end{AbstractEN}
 
 
 % sve sa A se prvo ispisuje kod oznaka
@@ -79,9 +75,7 @@ Ovdje ide sažetak rada na engleskom jeziku\\
 %	OVDJE IDE OSTATAK RADA I SVA POGLAVLJA
 %----------------------------------------------------------------------------------------
 % pocetak brojanja rada od prve stranice
-\pagebreak
-\setcounter{page}{1}
-\pagenumbering{arabic}
+\PageNumberingArabic
 
 % ovdje ide ostatak rada
 \input{uvod}
@@ -92,7 +86,7 @@ Ovdje ide sažetak rada na engleskom jeziku\\
 
 
 % literatura:
-\LiteraturaPostavke
+\LiteratureSettings
 \bibliography{literatura}
 
 
