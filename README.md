@@ -24,7 +24,6 @@ Inicijalizacija klase vrši se na slijedeći način:
 ```latex
 \documentclass[tip_rada, jezik, prikaz, stil, stil_naslova, stil_teorema]{FSBtex}
 ```
-</br>
 gdje su ulazni argument:
 
 | tip_rada  |   jezik  | prikaz |  stil |   stil_naslova   | stil_teorema |
