@@ -22,24 +22,24 @@ Inicijalizacija klase vrši se na slijedeći način:
 </p>
 
 ```latex
-\documentclass[tip_rada, jezik, stil, stil_naslova, stil_teorema]{FSBtex}
+\documentclass[tip_rada, jezik, prikaz, stil, stil_naslova, stil_teorema]{FSBtex}
 ```
 </br>
-gdje ulazni argument <span style="color:#00579e"><b><i>tip_rada</i></b></span> može bititi jedna os slijedećih opcija:
+gdje su ulazni argument:
 
-* seminar,
-* zavrsni,
-* diplomski,
-* projekt,
-* skripta,
-* zadatak.
-<p>Za svaku od opcija moguće je definirati varijablu <span style="color:#00579e"><b><i>jezik</i></b></span> koja može poprimiti vrijednosti <b><i>hrvatski</i></b> i <b><i>engleski</i></b>.
-Ukoliko se ne definira jezik rada smata se da se piše na hrvatskom jeziku.
+| tip_rada  |   jezik  | prikaz |  stil |   stil_naslova   | stil_teorema |
+| --------- | ---------| ------ | ----- | ---------------- | ------------ |
+| seminar   | hrvatski | web    | plain | titleplain       | theoremplain |
+| zavrsni   | engleski | print  | alter | titplealter      | theoremalter |
+| diplomski |          |        | fancy | titlefancy       | theoremfancy |
+| projekt   |          |        |       | titlefancyfigure |              |
+| skripta   |          |        |       |                  |              |
+| zadatak   |          |        |       |                  |              |
+
+
+<p>Početne postavke su klase su <b><i>seminar</i></b>, <b><i>hrvatski</i></b>, <b><i>web</i></b> i <b><i>plain</i></b>.
+Prilikom pisanja rada potrebno je odabrati jedino opciju tip rada, dok su sve ostale opcije dodatne opcije za razlicite stilove rada.
 </P>
-<p>
-Dodatnu opciju moguće je definirati samo za skriptu i njen naziv je <b><i>fancy</i></b>.
-Ona omogućuje da se u naslov poglavlja stavi slika te se preko nje napiše naslov tog poglavlja.
-</p>
 
 ## Naredbe definirane unutar FSBtex klase sa ulaznim argumentima
 
