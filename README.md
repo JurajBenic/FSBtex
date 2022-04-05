@@ -36,7 +36,7 @@ gdje su ulazni argument:
 | zadatak   |          |        |       |                  |              |
 
 
-<p>Početne postavke su klase su <b><i>seminar</i></b>, <b><i>hrvatski</i></b>, <b><i>web</i></b> i <b><i>plain</i></b>.
+<p>Početne postavke klase su <b><i>seminar</i></b>, <b><i>hrvatski</i></b>, <b><i>web</i></b> i <b><i>plain</i></b>.
 Prilikom pisanja rada potrebno je odabrati jedino opciju tip rada, dok su sve ostale opcije dodatne opcije za razlicite stilove rada.
 </P>
 
