@@ -77,7 +77,6 @@ Sve što želimo da se nalazi unutar okoline
 
 + <code>AbstractEN</code> &#8594; sažetak rada na engleskom jeziku
 + <code>AbstractHR</code> &#8594; sažetak rada na hrvatskom jeziku
-+ <code>SeminarAssignment</code> &#8594; definira izgled seminarskog zadatka; dodatni argument je ime studenta
   <hr>
 
 + <code>theorem</code> &#8594; okolina za pisanje matematičkog teorema; dodatni argument ime teorema
