@@ -23,12 +23,14 @@
 			\Large \textsc{\ifdefstring{\@language}{croatian}{\@TitleHR}{\@TitleEN}}%
 		}
 	\end{center}
-	\vfill		
+	\vfill
 	\begin{minipage}[t]{7cm}	% mentori
 		\ifdefstring{\@language}{croatian}{%
 			\ifdefempty{\@CoMentorHR}{
-				Mentor:\\[6pt]
-				\@MentorHR			
+				\ifdefempty{\@MentorHR}{}{
+					Mentor:\\[6pt]
+					\@MentorHR
+				}		
 			}
 			{
 				Mentori:\\[6pt]
@@ -37,8 +39,10 @@
 			}
 		}{%
 			\ifdefempty{\@CoMentorEN}{
-				Supervisor:\\[6pt]
-				\@MentorEN		
+				\ifdefempty{\@MentorEN}{}{
+					Supervisor:\\[6pt]
+					\@MentorEN
+				}
 			}
 			{
 				Supervisors:\\[6pt]
