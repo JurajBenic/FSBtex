@@ -95,7 +95,7 @@ Sve što želimo da se nalazi unutar okoline
 
 % postavke dokumenta
 \Author{Marko Markić}
-\MentorHR{prof. dr. sc. Pero Perić, dip. ing.}
+\MentorHR{prof. dr. sc. Pero Perić, dip. ing.} % moze i bez toga
 \TitleHR{Optimalna sinteza mehanizma tlačnog cilindra}
 
 % odvje se dodaje zadatak u pdf-u ako on postoji
