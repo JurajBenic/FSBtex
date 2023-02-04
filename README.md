@@ -40,6 +40,15 @@ gdje su ulazni argument:
 Prilikom pisanja rada potrebno je odabrati jedino opciju tip rada, dok su sve ostale opcije dodatne opcije za razlicite stilove rada.
 </P>
 
+## Naredbe za generiranje datoteke:
+
+* pdflatex main.tex
+* bibtex main
+* makeindex -s nomencl.ist -o main.nls main.nlo
+* makeglossaries-lite main
+* pdflatex main.tex
+* pdflatex main.tex
+
 ## Naredbe definirane unutar FSBtex klase sa ulaznim argumentima
 
 + `\Acknowledgment{...}` &#8594; zahlava za diplomski i završni rad
@@ -242,11 +251,4 @@ Ovdje ide tekst zadatka seminarskog rada bez imena studenta
 \end{document}
 ```
 
-## Naredbe za generiranje datoteke:
 
-* pdflatex main.tex
-* bibtex main
-* makeindex -s nomencl.ist -o main.nls main.nlo
-* makeglossaries-lite main
-* pdflatex main.tex
-* pdflatex main.tex
